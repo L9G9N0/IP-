@@ -1,0 +1,3 @@
+OpenAlex Data License Notification
+Timestamp: 2026-10-14T14:25:35+05:30
+Notice: OpenAlex data is licensed under CC0 (public domain). Users should review terms at https://developers.openalex.org/ and verify specific paper licenses for any downstream distribution restrictions.
