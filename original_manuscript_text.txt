@@ -1,0 +1,804 @@
+=== PAGE 1 ===
+ 
+Advancements in Carbon Dioxide Utilisation: Pathways to Sustainable 
+Chemicals, Fuels, and Materials for a Net-Zero Future 
+Anusha Rana, Rishab Raghuvanshi, Amit Beniwal, and Durlubh 
+Kumar Sharma​
+​
+Indraprastha Institute of Information Technology (IIIT Delhi), New 
+Delhi 110020 India  
+​
+*Corresponding author: anusharana510@gmail.com 
+ABSTRACT 
+The increasing concentration of atmospheric carbon dioxide (CO₂) has intensified 
+global efforts to develop Carbon Capture, Storage and Utilisation (CCSU) technologies. 
+This review examines key CO₂ utilisation routes, including chemical transformation, 
+mineralisation and biological transformation. Major CO₂ products such as methanol, 
+urea, formic acid, dimethyl carbonate, and polycarbonates, are discussed with respect to 
+reaction mechanisms, catalysts, industrial processes, and applications. Emerging uses in 
+pharmaceutical and biotechnological industries, where CO₂ is used as a green reagent 
+and solvent, are also discussed. Recent trends indicate emerging interest in industry and 
+the adoption of technology, but issues such as high energy demand, catalyst constraints, 
+and economic limitations remain a point of concern. To improve efficiency and 
+scalability, there is a need to integrate renewable energy sources with sophisticated 
+catalytic systems. Overall, CO₂ utilisation presents a promising pathway toward a 
+circular carbon economy and supports global efforts to achieve net-zero emissions and 
+increase possibilities of continued use of fossil fuels such as coal, petroleum and natural 
+gas. This paper highlights recent advances (2024–2026) and identifies key challenges 
+ 
+
+
+=== PAGE 2 ===
+ 
+for large-scale implementation. 
+KEYWORDS: CO₂ utilisation; CCSU; carbon capture; green chemistry; 
+sustainable fuels 
+1.​ Introduction 
+Carbon dioxide (CO₂), long considered a major greenhouse gas contributing to 
+climate change, is increasingly being recognized as an important carbon feedstock 
+in the chemical, energy, and materials industries (Aresta et al., 2014; Centi & 
+Perathoner, 2009; Sharma, 2021; Kim et al., 2022). Emissions of CO₂ worldwide 
+exceed 35 billion tonnes per year (IEA, 2024), most of which are from power 
+generation, steel, cement, chemicals, and transport sectors (IEA, 2024). As long as 
+fossil fuels remain the main source of energy, there is a dire need to develop policies 
+to reduce CO₂ levels whilst simultaneously expanding industrial production (Olah et 
+al., 2011; Aresta et al., 2014; Sharma,2023). Carbon Capture, Storage and 
+Utilisation (CCSU) methods offer a two-fold advantage by reducing emissions and 
+enabling the continued use of fossil fuels by converting CO₂ into value-added 
+products. This review repositions CO₂ from an environmental liability to a strategic 
+carbon resource (Keith et al., 2018). The high thermodynamic stability of CO₂ 
+(ΔG°f = -394.4 kJ/mol) makes its activation kinetically challenging (Lackner, 2003; 
+Sharma, 2010), yet catalysis, electrochemistry, and biotechnology techniques help 
+overcome these barriers. One example is chemical changes, such as dry reforming of 
+methane and CO₂ to produce syngas (H₂ + CO), which can form hydrocarbons via 
+Fischer-Tropsch synthesis (Pakhare & Spivey, 2014). Bioconversion uses 
+microorganisms such as Moorella thermoacetica to convert organic acids, which can 
+then be mineralized into construction materials using fly ash or steel slag in a 
+circular economy (Bagotia et al., 2018). Several techniques for the chemical and 
+ 
+
+
+=== PAGE 3 ===
+ 
+bioconversion of CO2 have been suggested recently along with the directions for 
+future research work for developing circular economy using CO2 (Sharma, 2021; 
+Sharma ,2023). The current trends (2024-2026) indicate the pace as the currently 
+existing global market of CO₂ utilisation is USD 4.57 billion in 2024 and will 
+become USD 11.15 billion in 2032 at a CAGR of 13.6% (IEA, 2024), whereas the 
+larger markets of utilizing carbon capture undergo expansions of USD 3.5 billion in 
+2026 and USD 51.6 billion in 2050 (IPCC,2023), Some of the driving aspects are 
+growing global climate policies, where more than 474 CCSU projects have been 
+announced, aiming to reach the eight hundred and fifteen million tonnes per annum 
+by 2030 (Global CCS Institute, 2024), and investment such as the United States 
+Inflation Reduction Act allocating one point seven billion to capture demonstrations. 
+The Icelandic Mammoth DAC i.e., Direct Air Capture (launched in 2026, capturing 
+36,000 tonnes/year) and the DAC unit at Aramco (12 tonnes/year in 2025) are 
+among the first steps. This need is further supported by the fact that 53,970 
+publications on CCSU in 2024 are 11.4% higher than the previous year (Global CCS 
+Institute, 2024). This review compiles findings from chemical pathways, industrial 
+case studies, and new trends to highlight the role of CO₂ in advancing the 
+low-carbon economy. Since there are extensive reserves of coal, a cheaper source of 
+energy available in the world, therefore, there is a grave need for exploring 
+economical possibilities of their continued use for power generation. That would 
+become possible only if the CCSU technologies are economically established. 
+2.​ Material and Methods 
+This study is a review-based analysis of carbon dioxide (CO₂) utilisation 
+technologies. Relevant literature was collected from peer-reviewed journals, books, 
+and industry reports focusing on chemical, biological, and industrial applications of 
+ 
+
+
+=== PAGE 4 ===
+ 
+CO₂. The sources were chosen for relevance, credibility, and recency, and 
+developments that occurred between 2010 and 2026 were given special attention. 
+The review synthesises information on reaction pathways, catalysts, industrial 
+processes, and emerging applications to provide a comprehensive understanding of 
+CO₂ utilisation. 
+ 
+3.​ Results and Discussion 
+(1)​Objective and Scope 
+This review aims to analyse key pathways for CO₂ utilisation, including 
+hydrogenation, carboxylation, and reforming processes. It assesses the industrial 
+processes, catalysts, and reaction mechanisms of transforming CO₂ to 
+value-added products. The research also contrasts the leading CO₂-based 
+chemicals, including methanol, urea, formic acid, dimethyl carbonate, metal 
+carbonates and polycarbonates, in terms of their sustainability and industrial 
+applicability. Recent developments and future trends are also encompassed in 
+the scope, as well as emerging applications in pharmaceuticals, biotechnology 
+and construction materials. 
+(2)​CO₂ as a Resource  
+Various industries emit large amounts of CO₂, and it is inexpensive and 
+non-toxic, making it an appealing chemical feedstock. Nonetheless, it needs to 
+be activated by catalysts, heat, or renewable electricity to achieve 
+thermodynamic stability (Alper & Orhan, 2017). There could also be a need for 
+the costly hydrogen under pressure to hydrogenate CO2 uneconomically. Efforts 
+are required to avoid using hydrogen to the extent possible though it is not 
+possible always and thus this may be done to the extent possible economically. 
+ 
+
+
+=== PAGE 5 ===
+ 
+CO₂ utilisation contributes to sustainability by reducing greenhouse gas 
+emissions, replacing fossil-derived chemicals with CO₂-based alternatives, and 
+enabling circular carbon economy models such as CO₂-based gasification 
+processes for syngas production. It helps in enabling circular carbon models, 
+e.g., CO₂ and coal gasification (Dhawan et al., Pakhare & Spivey, 2014; Sharma 
+and Giri, 2016; Dhawan et al., 2020), to produce syngas (Centi & Perathoner, 
+2009). 
+According to historical reviews, CO₂ was considered an inert gas (Peters et al., 
+2011; Quadrelli et al., 2011); however, it is now widely used in urea production 
+(on an industrial scale) and in biofuels with potential. New trends are moving 
+more rapidly: the EU launched an Innovation Fund worth 1.5 billion to support 
+CCSU projects, and China, in its Five-Year Plan, is interested in CCSU, 
+increasing DAC and utilisation (Global CCS Institute, 2024). Indian 
+Government has committed Rs. 20,000 crores towards efforts on CCSU for the 
+2026 -2027 budget 
+(https://www.downtoearth.org.in/climate-change/indias-rs-20000-crore-CCSU-p
+ush-what-the-union-budgets-carbon-capture-bet-really-means, accessed on April 
+14, 2026). 
+According to the Global Carbon Budget, global CO₂ emissions were projected to 
+reach 41.6 billion tonnes by 2024, underscoring the need for CCU (IEA,2024) 
+and these have understandably increased further in 2026.  
+Carbon dioxide is thermodynamically stable due to its linear molecular structure 
+and strong C=O double bonds (~750 kJ/mol bond energy), with a standard Gibbs 
+free energy of formation of ΔGf∘(CO₂) = −394.4 kJ/mol. This high stability 
+implies a large activation energy barrier, kinetic inertness under ambient 
+ 
+
+
+=== PAGE 6 ===
+ 
+conditions, and the need for external energy input. The primary energy penalty 
+sources include hydrogen production (especially if not green), high pressure 
+(20–100 bar), elevated temperatures (200–600°C), and catalyst regeneration. 
+(3)​CO₂ Utilisation Pathways 
+CO₂ utilisation can be broadly classified into chemical conversion, 
+mineralisation, and biological transformation; shown in Figure 1.  
+Figure 1. Classification of CO₂ utilisation pathways. 
+ 
+Image description: Diagram illustrating chemical, biological, and mineralisation 
+pathways of CO₂ leading to fuels, chemicals, and materials. 
+Chemical conversions may take the form of hydrogenation, such as CO₂ + H₂ 
+producing methanol (Pontzen et al., 2011), carboxylation, cycloaddition, or 
+electrochemical reduction (Jhong et al., 2013; Nitopi et al., 2019; Hori, 2008). 
+Mineralisation involves reactions of CO₂ with metal oxides or industrial waste 
+materials to form stable carbonates (Bagotia et al., 2018, Dhawan et al., 2019). 
+ Mineralisation provides permanent carbon storage, but its economic viability 
+depends on material availability and logistics. Lime, coal fly ash, steel slag or 
+silicate ores are readily available. Besides lime conversion to CaCO3, other 
+ 
+
+
+=== PAGE 7 ===
+ 
+conversions may require severe conditions for conversion and there further 
+research work is warranted. 
+Biological transformation involves using microbial and algal systems to convert 
+CO₂ into biofuels, organic compounds, and bioplastics (Global CCS Institute, 
+2024). Gautam et al (2015) have reviewed the research work on utilization of 
+CO2 for the growth of algae. The photosynthetic efficiency of algal systems is 
+higher in comparison to that of land based plants. However, there is a need to 
+economise the algal biorefineries ( Tyagi et al., 2014; Gautam et al., 2015; 
+Manchanda et al., 2021). Though Rubisco is a lethargic enzyme still 
+photosyntheses offers a potential natural CCSU process and there is a possibility 
+of utilizing lignocellulosic as well as algal biorefineries for the production of 
+biofuels and utilizing CO2. Jahid et al. (2018) have reported the production of 
+bioethanol using fruit wastes through chemical as well as biochemical 
+hydrolysis processes. Potential technologies for the production of chemicals, 
+fuels and value-added chemicals from biomass wastes has been reviewed by 
+Sharma (2015). 
+Table 1. Comparative techno-economic analysis of CO₂ utilisation pathways. 
+Pathway 
+ TRL 
+Energy 
+Input 
+Carbon 
+Permanence 
+Scalability 
+Main 
+Limitation 
+Hydrogenation 
+(Methanol) 
+8-9 
+High (H2 
+dependent) 
+Medium 
+Industrial 
+H2 cost 
+Electrochemical 5-7 
+Electricity 
+based 
+Low-mediu
+m 
+Pilot 
+Electrode 
+Stability 
+Mineralization 
+7-8 
+Moderate 
+Very high 
+Scalable 
+Material 
+Logistics 
+ 
+
+
+=== PAGE 8 ===
+ 
+Bioconversion 
+4-6 
+Low 
+medium 
+Low 
+Experimental Slow rates 
+4.​ Chemical Conversion of CO₂  
+The activation of stable CO₂ is carried out through several chemical means. Green 
+hydrogenation using H₂ occurs at 200–300°C and 20–100 bar using Cu/ZnO 
+catalysts (Goeppert et al., 2014; Bowker et al., 2019; Sabatier, 1912, Kim et al., 
+2022). Another method is formic acid reduction by renewable electricity using Sn 
+electrodes, while sunlight-based photocatalysis often utilizes TiO₂-based materials 
+(Whipple & Kenis, 2010). In the field of polymers, activation involves 
+carboxylation/cycloaddition (Kätelhön et al., 2019), and metal-organic frameworks 
+(MOFs) are employed to enhance selectivity in the cycloaddition reaction of 
+epoxides (Elhenawy et al., 2020). 
+Table 2. Comparison of Chemical Conversion Methods (Updated with 2024-2026 Data) 
+Method 
+Energy Source 
+Products 
+Challenges 
+Recent 
+Advances 
+Hydrogenation 
+Heat/ H2 
+Methanol, 
+Formic acid 
+H2 cost 
+KS-21 solvent; 
+88% CO₂ 
+conversion 
+Electrochemical Electricity 
+Formic acid, 
+CO₂, Ethanol 
+Electrode 
+Durability 
+Oxylus direct 
+methanol: >80% 
+selectivity 
+Dry Reforming 
+Heat 
+Syngas 
+Catalyst 
+Deactivation 
+Ni-Fe alloys: 
+BRM with 
+72.5% CO₂ 
+conversion 
+ 
+
+
+=== PAGE 9 ===
+ 
+ 
+Dry reforming of methane using CO2 (CH4 + CO₂ → 2CO + 2H₂) involves Ni-based 
+catalysts, and Fe promoters minimize the coke formation (Pakhare & Spivey, 2014; 
+Manabayeva et al. ,2023). Several bimetallic and trimetallic catalysts along with Ni 
+are being utilized. There is a formation of carbon nanomaterials which may be 
+recovered to activate the catalysts used.Tri-reforming stabilizes the process by 
+adding H₂O and O₂ (Swirk et al., 2017). Recent innovations include solvents such as 
+KS-21, which has been used for large-scale capture, combined MOF-sorbents with 
+improved efficiency, and electrochemical CO₂-to-ethanol conversion. 
+Methane bi-reforming (BRM) has shown promise, with conversion rates exceeding 
+80% using CaO catalysts. Research work on bireforming of methane has been 
+reviewed by Chan et al. (2025). 
+ 
+5.​ Industrially Relevant CO₂-Derived Chemicals  
+(1)​Methanol 
+Reaction: CO₂ + 3H₂ → CH₃OH + H₂O (ΔH = -49 kJ/mol).  
+Catalysts: Cu/ZnO/Al₂O₃ (standard industrial process).  
+Procedure: feed (CO₂) (flue gas/DAC) and green H₂ (generated in the electrolysis); 
+reaction conditions : 200–300°C, 20-100 bar; pathway; CO₂ → formate → 
+formaldehyde → methoxy → methanol; distillation; recycle unreacted gases. 
+(Goeppert et al., 2014; Behrens et al., 2012, Kim et al., 2022). 
+It is used as a fuel additive and as a precursor to formaldehyde, acetic acid, and 
+olefins (in the MTO process). Ethanol has potential as a fuel derived from CO₂, and 
+pilots such as Oxylus' electrochemical conversion are scheduled for 2026.  
+Figure 2 shows the process of conversion of CO2 to methanol in industries. 
+ 
+
+
+=== PAGE 10 ===
+ 
+Figure 2. Industrial CO₂-to-methanol production process. 
+ 
+Image description: Process diagram showing CO₂ and hydrogen input into a reactor for 
+methanol production under controlled temperature and pressure. 
+ 
+Although methanol synthesis from CO₂ is industrially established, its sustainability 
+depends heavily on the availability of green hydrogen, which remains a key 
+limitation. 
+(2)​Urea 
+Reaction: 2NH₃ + CO₂ → NH₄NH₂COO → CO(NH₂)₂ + H₂O 
+Process: CO₂ + NH₃ gives ammonium carbamate (140-175 bar); perform 
+dehydration and recycle NH₃.  
+Its uses are fertilizer, plastics, and resin. Urea production is one of the largest 
+industrial applications of CO₂ utilisation globally. 
+(3)​ Formic Acid  
+Routes: (1) CO₂ + H₂ → HCOOH; 
+       (2) Electrochemical: CO₂ + 2e⁻ + 2H⁺ → HCOOH.   
+Catalysts include: Homogeneous (Ru, Ir complexes) and Heterogeneous (Sn, Bi, 
+In, Pb electrodes).  Uses: Textile/leather treatment, H2 storage. The 
+ 
+
+
+=== PAGE 11 ===
+ 
+electrochemical paths are best used in distributed production (De Luna et al., 
+2019), More than 75% yield with DAC reported by Bajracharya et al., (2017).  
+Electrochemical CO₂ reduction offers high selectivity and flexibility; however, 
+challenges related to electrode stability and energy efficiency limit its large-scale 
+application. 
+(4)​Dimethyl Carbonate (DMC)  
+Reaction: CO₂ + 2CH₃OH → (CH₃O)₂CO + H₂O  
+Challenges include thermodynamic constraints, the need for water removal, and 
+the requirement for strong catalysts.  
+It has uses as a green solvent, a fuel additive, and a phosgene replacement.  
+(5)​Polyols & Cyclic Carbonates  
+Reactions: Epoxide + CO₂ → cyclic carbonate; copolymerization to 
+polycarbonate polyols (Ye et al., 2019). The catalysts are: Zn, Co metal 
+complexes; ionic liquids; organocatalysts. 
+Uses include polyurethanes, battery electrolytes, and engineering plastics. 40-50 
+wt% CO₂ locked (Artz et al., 2018); Graphene composite of CO₂ (Bagotia et al., 
+2018, Artz et al., 2018). 
+ 
+6.​ Graphene and Carbon Nanomaterials 
+Carbon dioxide can also be utilized for the production of advanced carbon 
+nanomaterials, such as, graphene and carbon nanotubes, which have significant 
+industrial applications in space crafts, transport vehicles, sports, defence, electronic 
+etc. (Bagotia et al., 2018a).  
+In fact , solid CO2 can be utilized by using burning Mg ribbon to produce graphene. 
+Bagotia et al. (2018b) have used Ni and Zn as promoters in this reaction to produce 
+ 
+
+
+=== PAGE 12 ===
+ 
+graphene having better characteristics and in higher yields. Graphene can be 
+converted to carbon nanotubes (Bagotia et al., 2018b). Recent studies highlight the 
+potential of CO₂ as a carbon source for synthesizing high-value nanostructured 
+materials. CO₂ can also be utilized for producing polycarbonates (Bagotia et al., 
+2018a). In fact, Bagotia et al. (2019) have utilized graphene and multiwalled carbon 
+nanotubes for producing polycarbonate/ ethylene methyl acrylate nanocomposites 
+having enhanced mechanical, electrical and EMI shielding properties. Graphene and 
+carbon nanotubes can be produced from CO₂ using Mg reduction, and Bagotia et al. 
+(2018a) have reported the enhancement in the production of graphene using Ni and 
+Zn as promoters. Here Ni was found to be a better promoter than Zn. 
+In fact, the use of graphene-based nanocomposites i.e., polycarbonate/ ethylene 
+methyl acrylate nanocomposites showed better electrical conductivity, thermal 
+conductivity, and EMI shielding properties.  
+Sharma (2023) has reported the production potential of carbon nanomaterials using 
+cheaper feedstocks, such as, coal, CO₂, waste plastics, non-edible vegetable oils etc.  
+Kim et al. (2022) and Yousuf et al. (2026) have reviewed the research work on the 
+industrial production of chemicals from the CO2 and the recent advances in the 
+CCSU. The utilization of CO2 for biofuels and petrochemical production is widely 
+known now. However, present authors have focused on the utilization of CO2 by the 
+pharmaceutical industries. Figure 3 shows the process of production of graphene 
+from CO2 and utilization of graphene and carbon nanotubes for the production of 
+polycarbonate and polystyrene. 
+Figure 3. Schematic representation of CO₂ conversion into graphene using Mg/Ni 
+catalysts and its subsequent utilization for the synthesis of polycarbonate and 
+polystyrene-based nanocomposites. 
+ 
+
+
+=== PAGE 13 ===
+ 
+ 
+ 
+7. Uses of CO₂ in the Pharmaceutical Industry  
+ In contemporary pharmaceutical processes, CO₂ is important not only as a chemical 
+reagent but also as a green solvent, extraction medium, sterilizing agent, and 
+formulation component (Elhenawy et al., 2020). Its non-flammable, non-toxic, 
+cost-effective, and non-polluting characteristics have made it a choice alternative to 
+harmful organic solvents. Figure 4 shows the different Pharmaceutical uses of CO₂. 
+Figure 4: Pharmaceutical uses of CO₂ 
+ 
+ 
+Important CO₂-Based Reactions in Drug Synthesis : 
+ 
+
+
+=== PAGE 14 ===
+ 
+(1)​ Carboxylation Reactions 
+One of the most basic reactions of CO₂ in the synthesis of organic compounds is 
+carboxylation. 
+General Reaction: R-MgX + CO₂ - R-COOH. 
+In this reaction, organometallic reagents such as Grignard reagents (R-MgX) or 
+organolithium compounds react with CO₂. The resulting magnesium carboxylate 
+is acidified to get carboxylic acids. 
+Medical Significance: These carboxylic acids are key intermediates in the 
+synthesis of NSAIDs (e.g., ibuprofen-type molecules), antibiotics, antifungals, 
+and β-lactam drugs. This reaction enables the efficient synthesis of CO₂, which 
+is a cost-effective source of carbon.   
+(2)​Carbamate and Urea Formation 
+CO₂ readily reacts with amines to form carbamates and urea. 
+General Reaction: 2 RNH₂ + CO₂ - RNH-CO-NHR + H₂O. 
+Pharmaceutical Significance: Antimalarial drugs, antibiotics, antiretroviral 
+drugs, antidiabetic drugs, and enzymes are produced. Examples include prodrug 
+formation (carbamates shield amino groups) and drug stability (in fact, the urea 
+derivatives enhance bioavailability).  
+(3)​Reactions in Supercritical CO₂ (scCO₂)  
+Supercritical CO₂ (scCO₂) above 31.1°C and 73.8 bar is a dual solvent, both 
+liquid and gas, and is considered a green solvent. 
+Some of the applications in pharmaceutical synthesis include: scCO₂ -assisted 
+organic reactions, such as hydrogenation, oxidation, polymerization; particle 
+formation, crystallization, or polymorph control to achieve solubility/stability; 
+and many others. 
+ 
+
+
+=== PAGE 15 ===
+ 
+Its Advantages include: Removing harmful organic solvents, processing at low 
+temperatures to maintain heat-sensitive molecules, and high diffusivity, which 
+permits faster, cleaner reactions. 
+8.Pharmaceutical Uses of CO₂  
+(1)​ Extraction and Purification 
+CO₂ (at supercritical conditions) has numerous applications in the extraction of 
+caffeine (decaffeination of coffee/tea) and essential oils, and is also used for the 
+extraction of alkaloids, vitamins, and steroids. 
+scCO₂ is a better choice because it produces no solvent residues (enhancing drug 
+purity), is non-toxic and GRAS, and can be used to selectively extract 
+compounds by adjusting pressure and temperature.  
+(2)​Sterilization 
+Supercritical CO₂ is an efficient sterilization medium for implantable medical 
+devices, surgical equipment, biological materials, and temperature-sensitive drug 
+formulations. Advantages over Heat or Radiation: Non-destructive sterilization; 
+does not degrade polymeric materials or biomolecules; leaves residues of 
+microbes or biomolecules. 
+(3)​Formulation and Drug Delivery 
+CO₂ is used to make porous structures, microparticles, foams for controlled drug 
+release, nano- and microencapsulation, tissue engineering materials, and 
+aerogels. 
+Mechanisms: The fast growth of the supercritical solutions; foaming under the 
+influence of CO₂; displacement of the solutions. 
+ 
+
+
+=== PAGE 16 ===
+ 
+Its Applications include the production of micronized drug powders with 
+improved dissolution rates and CO₂-expanded solutions for injectable or 
+transdermal formulations. 
+(4)​ pH Control in Fermentation Processes 
+In the production of biopharmaceuticals, CO₂ helps maintain optimal pH in 
+fermenters, which is then bubbled into microbial or cell culture systems. The 
+control of pH is essential for the production of antibiotics, enzymes, monoclonal 
+antibodies, and therapeutic proteins. 
+(5)​CO₂ as an Environmentally Friendly Solvent  
+CO₂ is preferred as it is Non-flammable, chemically inert, and recyclable. 
+Applications: Chromatography; particle engineering; drying processes; and 
+pharmaceutical green chemistry. CO₂ enables safer, more sustainable production 
+processes. 
+9.​ Application of CO₂ in Biotechnology 
+In Microbial electrosynthesis, CO₂ is reduced to acetate/ethanol with the assistance 
+of Moorella thermoacetica (Rabaey & Rozendal, 2010). Algal systems: Biodiesel, 
+proteins. Agricultural: Modified rice/Rubisco engineered to produce more 
+yields/capture CO₂ . 
+Fixation by chemoautotrophic bacteria​
+In fact, the chemoautotrophic bacteria such as Acidithiobacillus ferrooxidans, 
+Leptospirrulum ferrooxidans, Acidithiocillus thiooxidans, Sulfolobus acidocaldarius 
+etc. use CO2 as the carbon source instead of carbohydrates. These microbes have 
+been exploited in the metallurgical operations of Cu, A, U and pyritic ores. The use 
+of these microbes in the biodesulfurization of coal has also been made ( Sharma, 
+2021, Sharma,2023). Sharma (2021) has suggested the use of these bacteria for the 
+ 
+
+
+=== PAGE 17 ===
+ 
+CCSU also (Sharma and Sharma, 2010). In fact, Sharma (2023) has suggested the 
+utilization of CO2 for reaction with the side products produced during the boio 
+desulfurization of petroleum.Sharma (2021) has also recommended several 
+biotechnological approaches for the utilization of CO2, one of these is to improve 
+the efficiency of carbon dioxide fixation by all the six differeny cycles. The 
+efficiency of lethargic rubisco enzyme should also also be improved. 
+10.​Mineralization and Construction Materials  
+CO₂ + waste (fly ash, slag) yields green concrete/aggregates carbonates (Dhawan et 
+al., 2020) which provides long-term carbon storage. Recent developments: 
+WACKER's recovery in silicon production (IEA,2024); Mammoth DAC integration 
+with mineralization (IPCC,2023). 
+●​ Atom Economy: Note that the reaction R-MgX + CO₂ - R-COOH has high 
+atom economy because nearly every atom of the CO₂ molecule is 
+incorporated into the final drug intermediate. 
+●​ E-Factor (Environmental Factor): Using scCO₂ as a solvent in extraction 
+(e.g., decaffeination) drastically reduces the E-factor by eliminating 
+hazardous organic waste like dichloromethane. 
+11.​ Sustainability, Challenges, & Future Prospects  
+Although the use of CO₂ has enormous potential to transform the concept of a 
+circular carbon economy, there is significant complexity surrounding its adoption 
+across the technical, economic, regulatory, and environmental fronts. At the same 
+time, new vistas arise from technological advancements, policy innovations, and 
+market dynamics, offering a way out of these hurdles. It is a section that summarizes 
+the critical issues and opportunities based on recent analyses (2024-2026) and 
+focuses on sustainable scaling approaches. 
+ 
+
+
+=== PAGE 18 ===
+ 
+(1)​Technical Challenges 
+The thermodynamic stability of CO₂ requires significant energy to be activated, 
+leading to high operating costs and energy penalties in processes such as 
+hydrogenation and electrochemical reduction. The capture rate of existing 
+technologies typically reaches 90 %, so to reach 98 % or more, which would 
+qualify as net-zero, larger equipment would be used, new steps in the process 
+would be needed, and the energy consumption per tonne of CO₂ captured would 
+increase, which in turn becomes a factor in inflating the costs of the units. 
+Poisoning and catalyst degradation, especially in dry reforming, are ongoing 
+problems, and coke formation reduces efficiency (Manabayeva et al. ,2023). In 
+the case of direct air capture (DAC) and utilisation, the technology is not yet 
+sufficiently advanced, and it is difficult to scale low-concentration CO₂ 
+extraction and combine it with renewable energy sources. Recent research 
+emphasizes that the innovations in materials, such as advanced membranes and 
+sorbents (Global CCS Institute, 2024), will be required to reduce energy 
+requirements by 20-30% (D’Alessandro et al., 2010). 
+(2)​ Economic and Market Problems. 
+The substantial capital and operating costs are very restrictive, and the cost of 
+capturing CO₂ ranges from $40 to $ 120 per tonne, which is above current 
+carbon prices and, in an unsubsidized business scenario, makes it difficult to 
+cover the expense (IPCC ,2023). Next-wave technologies pass through "valleys 
+of death," a lengthy development cycle, high capital expenditure, and untested 
+business models that would discourage more traditional venture capital (World 
+Economic Forum, 2025). The issue of fragmented markets and a lack of regular 
+demand for CO₂-driven products also does not help the process of 
+ 
+
+
+=== PAGE 19 ===
+ 
+commercialization, as in the chemicals industry, where the utilisation route, such 
+as CO₂-to-methanol, would require a 14% cost reduction to compete by 2030 
+(Wood Mackenzie, 2026). There are also bottlenecks in monitoring, reporting, 
+and verification (MRV) of utilisation chains that impede certification and entry 
+to the market. 
+(3)​Policy and Regulatory Problems 
+Diverse systems across the global arena create ambiguity regarding liability, 
+long-term storage tracking, and the transportation of CO₂ across borders, 
+reducing investment confidence. Most of the regions do not have a unified 
+approach to CCSU, and fragmented incentives result in uneven implementation - 
+North America and Europe are the first, and Asia considers policy gaps. The 
+community needs to be strongly involved because the population remains 
+unconvinced due to environmental impacts and equity issues (IPCC ,2023). 
+(4)​Environmental and Sustainability Challenges. 
+Although CCU decreases emissions, life-cycle analyses of this method indicate 
+potential trade-offs, including increased water use in mineralization or 
+energy-intensive processes that offset the reductions if powered by fossil fuels 
+(IEA, 2024). Scaling should consider geographic expansion, with expansion 
+equally distributed to prevent stress on vulnerable populations (IPCC ,2023). 
+Figure 5 shows Life-Cycle Carbon Analysis: 
+Case 1: Conventional conversion, Case 2: CO₂-to-Methanol (Grey H₂): 
+Net life-cycle emissions remain positive due to upstream hydrogen production 
+Case 3: CO₂-to-Methanol (Green H₂): Net negative emissions are possible when 
+powered by renewable electricity  
+ 
+
+
+=== PAGE 20 ===
+ 
+ 
+(5) Opportunities and Future Prospects. 
+Nonetheless, 2026 will be a milestone in the life of CCU when its market will 
+reach USD 6.45 million and reach USD 20.4 billion at a CAGR of 13.5 by 2035 
+(IEA,2024). Cost and efficiency improvements will be enabled by technological 
+innovations, such as reactive carbon capture (RCC) and chemical looping 
+hydrogen production. Policy momentum: e.g., the EU Net-Zero Industry Act, 
+which requires storage of 50 Mt over the five-year timeframe, and the IRA, 
+which could unlock $80 billion in investment, could open up investment of $80 
+billion. Durable revenue will be generated through integration with compliance 
+carbon markets, which represent 28% of global emissions. Carbon-to-value 
+products such as nanotubes (a high-potential segment with 10-fold growth by 
+2030) and sustainable aviation fuels (another high-potential segment) are 
+emerging uses of platinum compounds. By 2030, capture capacity may increase 
+to 435 Mt/year, 4 times current levels, and DAC hubs such as Mammoth may 
+reach gigaton-scale potential. The R&D of energy-efficient technology, 
+harmonization of policies, and public-private collaboration should be the focus 
+of the future so that the result can be a market of 70-550 billion dollars by 
+2030-2040. 
+      (6) Recent Policy Developments:  
+ 
+
+
+=== PAGE 21 ===
+ 
+India’s Investment in Carbon Capture 
+Recent policy developments highlight the growing global commitment toward 
+carbon capture and utilisation technologies. In 2026, the Government of India 
+announced a significant financial allocation of approximately USD 2.4 billion to 
+accelerate the deployment of carbon capture, utilisation, and storage (CCSU) 
+technologies across key industrial sectors. This initiative is aimed at facilitating 
+large-scale implementation beyond pilot and demonstration projects, particularly 
+in emissions-intensive industries such as steel, cement, and power generation. 
+The funding strategy focuses on supporting innovation, infrastructure 
+development, and commercialization of CCSU technologies, reflecting a shift 
+from research-driven approaches to industrial-scale adoption. By prioritizing 
+public financing and policy support, India aims to reduce emissions while 
+maintaining industrial growth, aligning with its long-term net-zero 
+commitments. Such initiatives indicate a broader global trend where 
+governments are increasingly integrating CCSU into climate policy frameworks.  
+12.​ Conclusion  
+The use of CO₂ represents a paradigm shift, treating emissions as liabilities to the 
+environment and using them as resources in a closed carbon economy. Synthesizing 
+a variety of paths - chemical transformations to form methanol and urea, 
+biotechnological transformations to produce biofuels, and mineralization to form 
+long-lasting construction materials, this review has shown the versatility of CO₂ as 
+the solution to climate problems and economic development. Its potential is further 
+supported by advanced applications in the pharmaceutical sector, value-added 
+chemical and agricultural studies, and by bibliometric trends of rapidly rising 
+international research in hydrogenation and catalysis. 
+ 
+
+
+=== PAGE 22 ===
+ 
+However, scaling is limited by high costs, energy requirements, and regulatory 
+obstacles, as noted in recent studies The 2024-2026 momentum, though, growth to 
+USD 11-22 billion by 2032-2033, investment of more than half a billion, and other 
+projects such as Mammoth DAC are indicative of viability. By 2030, as capture 
+capacity reaches 435 Mt/year and 2030 policies, such as the NZIA, are forced by the 
+EU to push deployment, the CCU will mitigate 130 Mt/year in emissions (IEA 
+,2023) and create the desired markets of 70-550 billion by 2030-2040. 
+To achieve net-zero goals, stakeholders will have to focus on innovation in 
+low-energy technologies, harmonized policies, and fair application. By using 
+renewables and carbon credits, CO₂ emissions can guide fossil-based economies 
+toward sustainable futures, ensuring environmental conservation and resilience in 
+the industrial sector. In fact, coal is the major fuel of choice for much needed power 
+generation. Coal is the cheapest fossil fuel which is abundantly available as a low 
+cost fuel, may have to be utilized . If the cost-effective CCSU technologies become 
+available then it may become environmentally cleaner to use coal and future 
+generations may not have to depend only on renewable energy sources which have 
+their own issues. 
+ 
+Disclosure statement  : No potential conflict of interest was reported by the authors. 
+Data Availability Statement  : No new data were created or analysed in this study.  
+No funding was received. 
+References: 
+Alper, E., and Orhan, O.Y. (2017). Carbon dioxide utilisation: Developments in conversion 
+processes. Petroleum, 3(1), 109–126 
+Aresta, Michele, Dibenedetto, Angela, and Angelini, Antonella (2014). Catalysis for the 
+valorization of carbon dioxide to chemicals and fuels. Chemical Reviews, 114(3), 1709–1742. 
+ 
+ 
+
+
+=== PAGE 23 ===
+ 
+Artz, Johannes, Müller, Tobias E., Thenert, Katrin, Kleinekorte, Jan, Meys, Ralf, Sternberg, 
+André, Bardow, André, and Leitner, Walter (2018). Sustainable conversion of carbon dioxide: 
+An integrated review of catalysis and life cycle assessment. Chemical Reviews, 118(2), 
+434–504. 
+Bajracharya, Suman, Buisman, Cees J.N., and Strik, David P.B.T.B. (2017). Bioelectrochemical 
+conversion of CO₂ to chemicals. Faraday Discussions, 202, 433–449. 
+Bagotia, N., Mohite, H., Tanaliya, N., and Sharma, D.K. (2018). A comparative study of 
+electrical, EMI shielding and thermal properties of graphene and multiwalled carbon nanotube 
+filled polystyrene nanocomposites. Polymer Composites, 39(S2), E1041–E1051. 
+Behrens, Malte, Studt, Felix, Kasatkin, Ivan, Kühl, Stefan, Hävecker, Michael, Abild-Pedersen, 
+Frank, Zander, Stefan, Girgsdies, Frank, Kurr, Peter, Kniep, Burkhard L., Tovar, Michael, 
+Fischer, Reinhard W., Nørskov, Jens K., and Schlögl, Robert (2012). The active site of methanol 
+synthesis over Cu/ZnO/Al₂O₃ industrial catalysts. Science, 336(6083), 893–897. 
+Bowker, Michael (2019). Methanol synthesis from CO₂ hydrogenation. ChemCatChem, 11(17), 
+4238–4246. 
+Centi, Gabriele, and Perathoner, Siglinda (2009). Opportunities and prospects in the chemical 
+recycling of carbon dioxide to fuels. Catalysis Today, 148(3–4), 191–205. 
+Chan, Y.H., Chung Loong Yiin, C.L., Mee Mee Huang, M.M., Serene Sow Mun Lock, S.S.M., 
+Lai, B., Chin, F., et al. (2025). Advances in bi-reforming of methane: Syngas production for 
+low-carbon energy solutions. Chemical Engineering Journal, 505, 159660. 
+Changsoo Kim, Changsoo, Yoo, Chang-Jin, Oh, Hyeon-Seok, Minn, Byung-Kyu, and Lee, 
+U-Hyeok (2022). Review of carbon dioxide utilization technologies and their potential for 
+industrial application. Journal of CO₂ Utilization, 65, 102239. 
+D’Alessandro, Daniela M., Smit, Berend, and Long, Jeffrey R. (2010). Carbon dioxide capture: 
+Prospects for new materials. Angewandte Chemie International Edition, 49(35), 6058–6082 
+De Luna, Phil, Hahn, Christopher, Higgins, Drew, Jaffer, Syed A., Jaramillo, Thomas F., and 
+Sargent, Edward H. (2019). What would it take for renewably powered electrosynthesis to 
+displace petrochemical processes? Science, 364(6438), eaav3506. 
+Dhawan, H., and Sharma, D.K. (2019). Advances in the chemical leaching (inorgano-leaching), 
+bio-leaching and desulphurisation of coals. International Journal of Coal Science & 
+Technology, 6(2), 169–183. 
+Dhawan, H., Kumar, R., Upadhyayula, S., Pant, K.K., and Sharma, D.K. (2020). 
+Fractionation of coal through organo-separative refining for enhancing its potential for CO₂ 
+gasification. International Journal of Coal Science & Technology, 7(3), 504–515. 
+Down To Earth (2026). India’s Rs 20,000 crore CCSU push. 
+ 
+
+
+=== PAGE 24 ===
+ 
+Available at: 
+https://www.downtoearth.org.in/climate-change/indias-rs-20000-crore-CCSU-push-what-the-uni
+on-budgets-carbon-capture-bet-really-means (April 14, 2026). 
+Elhenawy, S. E., Khraisheh, M., AlMomani, F., and Walker, G. (2020). Metal-organic 
+frameworks as a platform for CO₂ capture and chemical processes. Catalysts, 10(11), 1293. 
+Gautam, K., Pareek, A., and Sharma, D.K. (2015). Exploiting microalgae and macroalgae for 
+production of biofuels and biosequestration of carbon dioxide: A review. 
+Global CCS Institute (2024). Global status of CCS 2024. (Accessed on 14 April, 2026) 
+https://www.globalccsinstitute.com/publications/global-status-of-ccs-2024/  
+Goeppert, Alain, Czaun, Michal, Jones, Jean-Pierre, Surya Prakash, G.K., and Olah, George A. 
+(2014). Recycling of carbon dioxide to methanol and derived products. Energy & 
+Environmental Science, 7(1), 218–221. 
+Hori, Yoshio (2008). Electrochemical CO₂ reduction on metal electrodes. In: Modern Aspects of 
+Electrochemistry. Springer. 
+International Energy Agency (IEA) (2024). CCSU in clean energy transitions. 
+IEA (2023). CO₂ emissions in 2023 – Analysis. 
+IPCC (2023). Climate Change 2023: Sixth Assessment Report. 
+Jahid, M., Gupta, A., and Sharma, D.K. (2018). Production of bioethanol from fruit wastes 
+under milder conditions. Journal of Bioprocessing & Biotechniques, 8(3). 
+Jhong, Hsuan-Rong M., Ma, Shi, and Kenis, Paul J.A. (2013). Electrochemical conversion of 
+CO₂ to useful chemicals. Current Opinion in Chemical Engineering, 2(2), 191–199. 
+Kätelhön, Arne, Meys, Ralf, Deutz, Sebastian, Suh, Sangwon, and Bardow, André (2019). 
+Climate change mitigation potential of carbon capture and utilization. Proceedings of the 
+National Academy of Sciences, 116(23), 11187–11194. 
+Keith, David W., Holmes, Geoffrey, St. Angelo, David, and Heidel, Kyle (2018). A process for 
+capturing CO₂ from the atmosphere. Joule, 2(8), 1573–1594. 
+Lackner, Klaus S. (2003). A guide to CO₂ sequestration. Science, 300(5626), 1677–1678. 
+Manabayeva, A.M., Mäki-Arvela, Päivi, Vajglová, Zuzana, Martinéz-Klimov, Maria, Tirri, 
+Timo, Baizhumanova, T.S., Grigor’eva, V.P., Zhumabek, M., Aubakirov, Y.A., Simakova, Irina 
+L., Murzin, Dmitry Y., and Tungatarova, Saule A. (2023). Dry reforming of methane over 
+Ni–Fe–Al catalysts. Industrial & Engineering Chemistry Research, 62(29), 11439–11455. 
+Manchanda, T., Tyagi, R., Sharma, D.K., and Gautam, K. (2014). Application of seawater for 
+hydrocarbon production by BotryocoCCSU braunii. Advanced Science Letters, 20(7–8), 
+1719–1722. 
+Manchanda, T., Tyagi, R., and Sharma, D.K. (2021). Process development engineering of 
+BotryocoCCSU braunii cultivation. Acta Scientific Biotechnology, 2(3), 03–13. 
+ 
+
+
+=== PAGE 25 ===
+ 
+Nitopi, Stavros, Bertheussen, Erlend, Scott, Shelby B., Liu, Xinyan, Engstfeld, Andreas K., 
+Horch, Sebastian, Seger, Brian, Stephens, Ifan E.L., Chan, Karen, Hahn, Christopher, Nørskov, 
+Jens K., Jaramillo, Thomas F., and Chorkendorff, Ib (2019). Progress of electrochemical CO₂ 
+reduction on copper. Chemical Reviews, 119(12), 7610–7672. 
+Pakhare, Dnyaneshwar, and Spivey, James (2014). Dry reforming of methane over catalysts. 
+Chemical Society Reviews, 43(22), 7813–7837. 
+Peters, Matthias, Köhler, Bernd, Kuckshinrichs, Wilhelm, Leitner, Walter, Markewitz, Peter, and 
+Müller, Thomas E. (2011). Chemical technologies for exploiting and recycling CO₂. 
+ChemSusChem, 4(9), 1216–1240. 
+Pontzen, Florian, Liebner, Wolfgang, Gronemann, Volker, Rothaemel, Michael, and Ahlers, 
+Bernd (2011). CO₂-based methanol and DME production. Catalysis Today, 171(1), 242–250. 
+Quadrelli, Elsa A., Centi, Gabriele, Duplan, Jean-Luc, and Perathoner, Siglinda (2011). Carbon 
+dioxide recycling technologies. ChemSusChem, 4(9), 1194–1215. 
+Rabaey, Korneel, and Rozendal, René A. (2010). Microbial electrosynthesis. Nature Reviews 
+Microbiology, 9(9), 628–636. 
+Sharma, D.K. (2015). Emerging biomass conversion technologies. Proceedings of the Indian 
+National Science Academy, 81(3), 755–764. 
+Sharma, D.K. (2021). Bioengineering of CO₂ utilization for circular bioeconomy. Acta Scientific 
+Biotechnology, 2(7), 1–2. 
+Sharma, D.K. (2023). Potential cost-effective feedstocks for carbon nanomaterials. Global 
+Journal of Materials Science and Engineering, 5(2), 152. 
+Sharma, D.K. (2023). Future scope of research on biodesulfurisation and biodemineralisation. 
+Acta Scientific Biotechnology, 4(1), 12–15. 
+Sharma, D.K., and Giri, C.C. (2016). CO₂ gasification reactivity studies. Journal of Power 
+Technologies, 96(3), 157–169. 
+Sharma, R., and Sharma, D.K. (2010). CO₂ sequestration trends. Journal of Applied 
+Geochemistry, 12(4), 520–527. 
+Szwirk, Krzysztof, Motak, Michał, Grzybek, Tomasz, and Da Costa, Pierre (2017). 
+Tri-reforming of methane. Renewable and Sustainable Energy Reviews, 74, 791–807. 
+Whipple, Devin T., and Kenis, Paul J.A. (2010). Electrochemical CO₂ reduction prospects. 
+Journal of Physical Chemistry Letters, 1(24), 3451–3458. 
+Wood Mackenzie (2026). Carbon capture market outlook. (14 April,2026) 
+https://www.woodmac.com/news/opinion/carbon-management-2026-outlook/  
+Ye, Shiqiang, Wang, Shuang, Lin, Liang, Xiao, Ming, and Meng, Yizhi (2019). CO₂-derived 
+biodegradable polycarbonates. Advanced Industrial and Engineering Polymer Research, 2(4), 
+143–160. 
+ 
+
+
+=== PAGE 26 ===
+ 
+Yousuf, B.O., Abdulrasheed, A.A., Hambali, H.U., Gbadamosi, A., Yusuff, A.S., et al. (2026). 
+CO₂ capture and utilization technologies. Carbon Capture Science & Technology, 18, 100589.  
+ 
+
+
