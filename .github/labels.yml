@@ -1,0 +1,41 @@
+# Recommended GitHub Issue & Pull Request Labels
+
+- name: "bug"
+  color: "d73a4a"
+  description: "Something is not working or an unhandled exception occurred"
+
+- name: "scientific-dispute"
+  color: "b60205"
+  description: "An empirical metric, chemical stoichiometry, or catalyst benchmark is disputed"
+
+- name: "data-integrity"
+  color: "0052cc"
+  description: "Relational CSV schema, column counts, or RFC 4180 compliance"
+
+- name: "enhancement"
+  color: "a2eeef"
+  description: "New dataset columns, CLI arguments, or pathway reports"
+
+- name: "documentation"
+  color: "0075ca"
+  description: "Improvements or additions to documentation and publication dossiers"
+
+- name: "chemistry"
+  color: "7057ff"
+  description: "Reaction thermodynamics, catalyst mechanisms, and stoichiometry"
+
+- name: "lca-tea"
+  color: "0e8a16"
+  description: "Life-cycle assessment boundaries and techno-economic scenarios"
+
+- name: "good first issue"
+  color: "7057ff"
+  description: "Good for newcomers to scientific data engineering"
+
+- name: "help wanted"
+  color: "008672"
+  description: "Extra attention or domain-expert review needed"
+
+- name: "dependencies"
+  color: "0366d6"
+  description: "Automated dependency updates"

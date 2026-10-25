@@ -1,0 +1,49 @@
+name: "Bug Report"
+description: "File a bug report for an unhandled exception, broken script, or CLI failure."
+title: "[BUG]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue! Please provide as much detail as possible.
+  - type: input
+    id: environment
+    attributes:
+      label: Operating System & Python Version
+      description: What OS and Python version are you running? (e.g., macOS Sequoia, Python 3.12.3)
+      placeholder: "e.g., Ubuntu 24.04 LTS, Python 3.11.8"
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Command Executed
+      description: What exact command did you execute?
+      placeholder: "python3 scripts/build_literature_matrix.py --verify"
+    validations:
+      required: true
+  - type: textarea
+    id: traceback
+    attributes:
+      label: Terminal Output / Traceback
+      description: Paste the exact error output or traceback.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checks
+      options:
+        - label: I verified that the issue exists on the latest `main` branch.
+          required: true
+        - label: I searched existing GitHub issues and confirmed this is not a duplicate.
+          required: true

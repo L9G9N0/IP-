@@ -1,0 +1,44 @@
+name: "Documentation & Markdown Linter"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  markdown-lint:
+    name: Lint Markdown Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Verify Markdown Heading Structure & UTF-8
+        run: |
+          python -c "
+          import glob, sys
+          failed = False
+          for path in sorted(glob.glob('**/*.md', recursive=True)):
+              if '.venv' in path:
+                  continue
+              try:
+                  with open(path, 'r', encoding='utf-8') as f:
+                      content = f.read()
+                      if not content.strip():
+                          print(f'[WARN] Empty markdown file: {path}')
+                      if '\r\n' in content:
+                          print(f'[FAIL] CRLF line endings detected in: {path}')
+                          failed = True
+              except UnicodeDecodeError:
+                  print(f'[FAIL] Non-UTF-8 encoding in: {path}')
+                  failed = True
+          if failed:
+              sys.exit(1)
+          print('[PASS] All markdown documents verified for UTF-8 and LF line endings.')
+          "

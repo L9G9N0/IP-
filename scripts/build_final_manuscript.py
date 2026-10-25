@@ -1,8 +1,19 @@
-import os
+"""Final Manuscript Compiler for CCU Evidence Engine.
 
-manuscript_path = 'manuscript/revisions/MANUSCRIPT_FINAL_RESEARCH_DRAFT.md'
+Compiles the comprehensive, publication-ready revised review manuscript into
+manuscript/revisions/MANUSCRIPT_FINAL_RESEARCH_DRAFT.md.
+"""
 
-content = """# Advancements in Carbon Dioxide Utilisation: Pathways to Sustainable Chemicals, Fuels, and Materials for a Net-Zero Future
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+from typing import Sequence
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_OUTPUT = REPO_ROOT / "manuscript" / "revisions" / "MANUSCRIPT_FINAL_RESEARCH_DRAFT.md"
+
+MANUSCRIPT_CONTENT: str = r"""# Advancements in Carbon Dioxide Utilisation: Pathways to Sustainable Chemicals, Fuels, and Materials for a Net-Zero Future
 
 **Anusha Rana, Rishab Raghuvanshi, Amit Beniwal, and Durlubh Kumar Sharma\***  
 *Department of Chemical Engineering and Department of Computational Biology, Indraprastha Institute of Information Technology Delhi (IIIT-Delhi), Okhla Phase III, New Delhi 110020, India*  
@@ -492,7 +503,43 @@ Across technological pathways, maturity and carbon durability vary drastically. 
 55. **Zheng, T., Liu, C., Guo, C., Zhang, M., & Zhang, X.** (2021). Efficient electrochemical CO₂-to-CO conversion at ampere-level current densities over single-atom nickel catalysts. *Nature Catalysis*, 4(12), 1020–1031. DOI: [10.1038/s41929-021-00624-9](https://doi.org/10.1038/s41929-021-00624-9)
 """
 
-with open(manuscript_path, 'w') as f:
-    f.write(content)
 
-print(f'Successfully wrote complete revised manuscript to {manuscript_path}')
+def build_manuscript(output_path: Path | str = DEFAULT_OUTPUT) -> Path:
+    """Build and write the comprehensive revised manuscript draft.
+
+    Args:
+        output_path: Target path for the generated Markdown manuscript.
+
+    Returns:
+        Path to the written manuscript.
+    """
+    path = Path(output_path).resolve()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(MANUSCRIPT_CONTENT)
+    print(f"Successfully wrote complete revised manuscript to {path}")
+    return path
+
+
+def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
+    """Parse CLI arguments."""
+    parser = argparse.ArgumentParser(description="Compile the revised CCU review manuscript.")
+    parser.add_argument(
+        "--output",
+        "-o",
+        type=Path,
+        default=DEFAULT_OUTPUT,
+        help=f"Target output markdown path (default: {DEFAULT_OUTPUT})",
+    )
+    return parser.parse_args(args)
+
+
+def main() -> None:
+    """CLI Entry Point."""
+    args = parse_args()
+    build_manuscript(output_path=args.output)
+
+
+if __name__ == "__main__":
+    main()
+

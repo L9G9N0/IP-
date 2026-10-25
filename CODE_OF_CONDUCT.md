@@ -1,58 +1,65 @@
-# Scientific & Academic Code of Conduct
+# Contributor Covenant Code of Conduct
 
 > **Document:** `CODE_OF_CONDUCT.md`  
 > **Platform:** Evidence-Based CCU Research & Data Engine  
-> **Standard:** Contributor Covenant v2.1 with Academic Integrity Addenda  
+> **Status:** Canonical Community Standards  
+> **Version:** Contributor Covenant v2.1  
 > **Last Updated:** October 2026  
 
 ---
 
-## 1. Our Commitment
+## 1. Our Pledge
 
-As researchers, developers, and maintainers of the **Carbon Dioxide Utilisation (CCU) Evidence Engine & Review Platform** at IIIT-Delhi, we are committed to providing a friendly, safe, welcoming, and intellectually rigorous environment for all participants, regardless of gender, gender identity, sexual orientation, disability, physical appearance, race, ethnicity, age, religion, or academic background.
+We as members, contributors, and maintainers of the **Carbon Dioxide Utilisation (CCU) Evidence Engine & Research Platform** pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, caste, color, religion, or sexual identity and orientation.
 
----
-
-## 2. Scientific Integrity & Ethical Standards
-
-Because this platform directly informs peer-reviewed scholarly publications in chemistry, energy engineering, and climate policy, all contributors are held to the highest standards of scientific ethics:
-
-1. **Honest & Complete Reporting:** Contributors must report primary research data faithfully. Selectively reporting favorable Faradaic efficiencies while omitting cell voltage, energy efficiency, or stability degradation is considered a violation of scientific integrity.
-2. **Zero Tolerance for Data Fabrication:** Any introduction of falsified numbers, fabricated DOIs, or manipulated literature claims will result in immediate and permanent revocation of contributor access.
-3. **Attribution & Originality:** All data, figures, and conceptual models derived from published literature must be properly cited with active DOIs. Unattributed reproduction of copyrighted figures is strictly prohibited.
-4. **Thermodynamic Truthfulness:** We reject greenwashing and pro-fossil thermodynamic fallacies. Proposals that advocate continuing unabated fossil combustion under the guise of circular utilization must be accompanied by rigorous cradle-to-grave mass and energy balances.
+We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
 
 ---
 
-## 3. Community Standards
+## 2. Our Standards
 
-Examples of behavior that contributes to a positive, productive environment include:
-- Demonstrating empathy and kindness toward fellow researchers and contributors.
-- Respecting differing scientific viewpoints when supported by empirical evidence.
-- Giving and gracefully accepting constructive peer feedback.
-- Accepting responsibility and apologizing to those affected by our mistakes.
-- Focusing on what is best not just for individual credit, but for scientific rigor and open science.
+Examples of behavior that contributes to a positive environment for our community include:
+- Demonstrating empathy and kindness toward other people.
+- Being respectful of differing opinions, scientific viewpoints, and life experiences.
+- Giving and gracefully accepting constructive scientific feedback.
+- Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience.
+- Focusing on what is best not just for us as individuals, but for the overall research and scientific community.
 
 Examples of unacceptable behavior include:
-- Harassment, trolling, or insulting/derogatory comments.
-- Personal or political attacks unrelated to scientific argumentation.
+- The use of sexualized language or imagery, and sexual attention or advances of any kind.
+- Trolling, insulting or derogatory comments, and personal or political attacks.
 - Public or private harassment.
-- Publishing others' private information without explicit permission.
+- Publishing others' private information, such as a physical or email address, without their explicit permission.
+- Other conduct which could reasonably be considered inappropriate in a professional setting.
+- Academic dishonesty, data fabrication, or deliberate falsification of chemical or bibliometric metrics.
 
 ---
 
-## 4. Enforcement Responsibilities & Reporting
+## 3. Enforcement Responsibilities
 
-The maintainers at IIIT-Delhi are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, or scientifically dishonest.
+Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
 
-Instances of abusive, harassing, or unethical behavior may be reported directly to:
-- **Lead Author:** Anusha Rana (`anusharana510@gmail.com`)
-- **Institution:** Department of Computer Science & Engineering, IIIT-Delhi
-
-All complaints will be reviewed and investigated promptly and fairly. All maintainers are obligated to respect the privacy and security of the reporter of any incident.
+Community leaders have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, and will communicate reasons for moderation decisions when appropriate.
 
 ---
 
-## 5. Attribution
+## 4. Scope
 
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.1, with custom addenda governing academic ethics, thermodynamic consistency, and scientific data provenance.
+This Code of Conduct applies within all community spaces (including GitHub repositories, issue trackers, pull requests, and discussion forums), and also applies when an individual is officially representing the community in public spaces.
+
+---
+
+## 5. Enforcement & Reporting Guidelines
+
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the project maintainers at:
+- **Email:** `anusharana510@gmail.com`
+- **Corresponding Author:** Prof. Durlubh Kumar Sharma (`dsharma@iiitd.ac.in`)
+- **Institution:** Department of Chemical Engineering & Department of Computational Biology, IIIT-Delhi.
+
+All complaints will be reviewed and investigated promptly and fairly. All community leaders are obligated to respect the privacy and security of the reporter of any incident.
+
+### Enforcement Guidelines
+1. **Correction:** A private, written warning providing clarity on the nature of the violation and an explanation of why the behavior was inappropriate.
+2. **Warning:** A warning with consequences for continued behavior.
+3. **Temporary Ban:** A temporary ban from any sort of interaction or public communication with the community for a specified period of time.
+4. **Permanent Ban:** A permanent ban from any sort of public interaction within the community.

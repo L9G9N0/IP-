@@ -7,146 +7,190 @@
 
 ---
 
-## 1. High-Level Directory Overview
+## Table of Contents
+
+- [High-Level Directory Overview](#high-level-directory-overview)
+- [Complete Repository Directory Tree](#complete-repository-directory-tree)
+- [Root Governance & Configuration Manifest](#root-governance--configuration-manifest)
+- [GitHub Enterprise Standards Manifest (`.github/`)](#github-enterprise-standards-manifest-github)
+- [Algorithmic Script Layer Manifest (`scripts/`)](#algorithmic-script-layer-manifest-scripts)
+- [Scientific Data Stores Manifest (`research/`)](#scientific-data-stores-manifest-research)
+- [Manuscript & Academic Sources Manifest (`manuscript/`)](#manuscript--academic-sources-manifest-manuscript)
+- [Automated Verification Suite Manifest (`tests/`)](#automated-verification-suite-manifest-tests)
+- [Operational Records Manifest (`docs/`)](#operational-records-manifest-docs)
+
+---
+
+## High-Level Directory Overview
 
 ```text
 IP-/
-├── [Root Documentation & Governance]     # Master guides, architecture, API, security, lifecycle
-├── .licenses/                            # Open-access and API licensing documentation
+├── .github/                              # CI/CD workflows, issue templates, PR template, CODEOWNERS
+├── .licenses/                            # Open-access and third-party licensing documentation
 ├── docs/                                 # Operational logs, decision records, research workflows
-├── manuscript/                           # Baseline drafts, extracted figures, revision plan
-├── research/                             # 10 core research directories containing databases & dossiers
-└── scripts/                              # 8 reproducible Python data generation scripts
+├── manuscript/                           # Baseline drafts, extracted figures, revision plan, revised draft
+├── research/                             # 10 core scientific directories containing databases & dossiers
+├── scripts/                              # 9 reproducible Python data generation scripts
+└── tests/                                # Automated pytest test suite
 ```
 
 ---
 
-## 2. Comprehensive File-by-File Manifest
+## Complete Repository Directory Tree
 
-### 2.1 Root Documentation & Governance Files
-| File Name | Purpose & Contents | Format |
-|---|---|---|
-| `README.md` | Master project portal featuring visual Mermaid diagrams, problem statement, executive summary, engineering journey, milestones, and dataset showcases. | CommonMark |
-| `ARCHITECTURE.md` | In-depth technical architecture describing the multi-tier data engine, metric normalization algorithms, LCA boundaries, and relational database schemas. | CommonMark |
-| `API.md` | Technical specifications for the 8 data generation scripts in `scripts/`, command-line execution parameters, schema definitions, and programmatic query recipes (Python/R). | CommonMark |
-| `PROJECT_STRUCTURE.md` | This document; complete file-by-file directory tree explaining the purpose and scope of every file in the repository. | CommonMark |
-| `DEVELOPMENT.md` | Guide for local setup, Python 3.14 execution, virtual environments, RFC-4180 CSV validation, and script modification guidelines. | CommonMark |
-| `DEPLOYMENT.md` | Operational release pipeline detailing publication workflows, Overleaf/LaTeX synchronization, preprint submission, Zenodo archiving, and versioning. | CommonMark |
-| `SECURITY.md` | Academic integrity and security framework covering DOI immutability, data provenance, tamper resistance, and credential isolation. | CommonMark |
-| `ROADMAP.md` | Comprehensive milestone tracker documenting completed audit phases (Phases 0–12) and forward-looking publication phases (Phases 13–15). | CommonMark |
-| `CONTRIBUTING.md` | Contribution guidelines for academic and open-science collaborators, including commit message conventions, PR review standards, and data verification protocols. | CommonMark |
-| `SUPPORT.md` | Support channels, institutional points of contact at IIIT-Delhi, bug reporting, and academic data citation guidelines. | CommonMark |
-| `CODE_OF_CONDUCT.md` | Scientific integrity and academic ethical guidelines adapted from the Contributor Covenant 2.1. | CommonMark |
-| `RELEASE.md` | Formal release notes for `v1.0.0-audit`, summarizing the completed research audit, evidence databases, and revision framework. | CommonMark |
-| `.gitignore` | Standard Git ignore file specifying exclusions (`.DS_Store`, `__pycache__`, temporary build artifacts). | Plain Text |
-| `CO2_UTILIZATION_ResearchPaper_2026 (1).pdf` | Canonical archive of the original 26-page unrevised draft manuscript. | Binary (PDF) |
-| `original_manuscript_text.txt` | Complete line-numbered raw text extracted from the baseline PDF (804 lines) for automated text processing and audit reference. | UTF-8 Text |
-
----
-
-### 2.2 `.licenses/`
-| File Name | Purpose & Contents |
-|---|---|
-| `literature_search_openalex_LICENSE.txt` | Attribution and Open Data Commons (ODC-BY) licensing notice for OpenAlex bibliometric API data integration. |
-
----
-
-### 2.3 `manuscript/` (Manuscript Drafting & Assets)
 ```text
-manuscript/
-├── original/
-│   ├── original_manuscript.pdf           # Canonical duplicate of the baseline PDF
-│   └── figures/
-│       ├── page_6_img_1_22.png           # Original Figure 1 bitmap (Carbon cycle schematic)
-│       ├── page_10_img_2_33.png          # Original Figure 2 bitmap (Formate reaction mechanism)
-│       ├── page_13_img_3_41.jpeg         # Original Figure 3 bitmap (Electrochemical cell setup)
-│       ├── page_13_img_4_42.png          # Original Figure 4 bitmap (Overpotential stability plot)
-│       └── page_20_img_5_60.png          # Original Figure 5 bitmap (Cost breakdown chart)
-└── revisions/
-    └── REVISION_PLAN.md                  # Comprehensive 21-section blueprint detailing exact restructuring, text deletions, and new paragraph drafts.
+IP-/
+├── .editorconfig                         # Cross-editor formatting rules (indent, charset, EOL)
+├── .gitignore                            # Git untracked pattern definitions
+├── .github/
+│   ├── CODEOWNERS                        # Code ownership mapping
+│   ├── dependabot.yml                    # Dependabot configuration for actions & pip
+│   ├── discussions.md                    # GitHub Discussions configuration recommendations
+│   ├── labels.yml                        # GitHub standardized labels taxonomy
+│   ├── pull_request_template.md          # Comprehensive PR checklist and metadata template
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.yml                # Structured bug report form
+│   │   ├── config.yml                    # Issue template chooser configuration
+│   │   ├── feature_request.yml           # Feature proposal form
+│   │   ├── question.yml                  # General inquiry form
+│   │   └── scientific_claim_dispute.yml  # Formal empirical claim dispute form
+│   └── workflows/
+│       ├── ci.yml                        # Matrix CI (Python 3.11-3.13 on Linux, macOS, Windows)
+│       ├── codeql.yml                    # CodeQL static application security testing
+│       └── docs-lint.yml                 # Markdown linting & line-ending verification
+├── .licenses/
+│   └── literature_search_openalex_LICENSE.txt # OpenAlex API license note
+├── API.md                                # Script execution CLI reference & CSV schema definitions
+├── ARCHITECTURE.md                       # Five-tier technical architecture & mathematical models
+├── CHANGELOG.md                          # Version release history following Keep a Changelog
+├── CODE_OF_CONDUCT.md                    # Contributor Covenant v2.1 ethical standards
+├── CONTRIBUTING.md                       # Comprehensive contributor workflows & RFC 4180 rules
+├── DEPLOYMENT.md                         # Release, Zenodo DOI minting & ChemRxiv deposition procedures
+├── DEVELOPMENT.md                        # Local developer setup, testing, and linting guide
+├── LICENSE                               # Official MIT open-source license
+├── Makefile                              # Make build, test, lint, format, and clean automation
+├── PROJECT_STRUCTURE.md                  # This file; canonical repository file manifest
+├── README.md                             # Flagship enterprise README portal
+├── RELEASE.md                            # SemVer 2.0.0 versioning policy and release cadence
+├── ROADMAP.md                            # Multi-phase research roadmap and publication milestones
+├── SECURITY.md                           # Security policy, DOI immutability, and vulnerability SLA
+├── SUPPORT.md                            # Support channels and institutional contacts
+├── original_manuscript_text.txt          # Extracted raw text of the 26-page baseline manuscript
+├── CO2_UTILIZATION_ResearchPaper_2026 (1).pdf # Original baseline research paper PDF
+├── pyproject.toml                        # Modern Python project configuration (ruff, pytest, mypy)
+├── requirements.txt                      # Production environment declarations (zero runtime dependencies)
+├── requirements-dev.txt                  # Development dependencies (pytest, ruff, mypy)
+├── docs/
+│   ├── CHANGELOG.md                      # Synchronized copy of project changelog
+│   ├── DECISION_LOG.md                   # Formal records for scientific decisions D-01 through D-08
+│   └── RESEARCH_WORKFLOW.md              # Systematic PRISMA literature screening methodology
+├── manuscript/
+│   ├── original/
+│   │   ├── original_manuscript.pdf       # 26-page unverified baseline PDF
+│   │   └── figures/                      # 5 rasterized figures extracted from baseline paper
+│   └── revisions/
+│       ├── MANUSCRIPT_FINAL_RESEARCH_DRAFT.md # 488-line synthesized full review draft
+│       └── REVISION_PLAN.md              # Reorganization blueprint across 13 pathways
+├── research/
+│   ├── audit/                            # Forensic audits, risk registers, and QC reports
+│   │   ├── FINAL_CLAIM_AND_REFERENCE_AUDIT.csv # 22-claim comprehensive audit
+│   │   ├── FINAL_MANUSCRIPT_QC_REPORT.md # Final quality control report
+│   │   ├── FINAL_RESEARCH_GAP_CLOSURE_REPORT.md # Gap closure matrix
+│   │   ├── FINAL_SCIENTIFIC_CONSISTENCY_AUDIT.md # Cross-document consistency verification
+│   │   ├── INITIAL_RESEARCH_PROBLEMS.md  # 10 initial manuscript vulnerabilities
+│   │   ├── ORIGINAL_MANUSCRIPT_ANALYSIS.md # Forensic analysis of baseline draft
+│   │   ├── PUBLICATION_RISK_REGISTER.md  # Peer-review risk register
+│   │   ├── REPOSITORY_ENGINEERING_AUDIT.md # 12-dimension technical software audit
+│   │   ├── REPOSITORY_MODERNIZATION_REPORT.md # Platform modernization summary
+│   │   └── SECTION_BY_SECTION_AUDIT.csv  # 21-section disposition matrix
+│   ├── chemistry/                        # Chemical reaction databases & mechanisms
+│   │   ├── NEW_REACTION_CANDIDATES.md    # 13 high-potential candidate reactions
+│   │   ├── NEW_REACTIONS_VERIFIED.md     # In-depth mechanistic analysis of new candidates
+│   │   ├── REACTION_DATABASE.csv         # Baseline 22-reaction database
+│   │   ├── REACTION_DATABASE_FINAL.csv   # Comprehensive 28-reaction verified database
+│   │   └── REACTION_MECHANISM_ANALYSIS.md# Surface catalyst kinetics & mechanisms
+│   ├── evidence/                         # Evidence registers and normalization rules
+│   │   ├── CLAIM_REGISTER.csv            # 16 audited baseline claims
+│   │   ├── EVIDENCE_COVERAGE_REPORT.md   # Evidentiary coverage report
+│   │   └── METRIC_NORMALIZATION.md       # Governing equations (FE, SPC, EE, STY)
+│   ├── figures/                          # Vector figure blueprints and audits
+│   │   ├── FIGURE_AUDIT.md               # Audit of baseline figures
+│   │   └── FIGURE_PLANS.md               # Blueprints for 8 publication-grade figures
+│   ├── gaps/                             # Literature gaps & novelty landscape
+│   │   ├── RESEARCH_GAPS.md              # 10 documented industrial bottlenecks
+│   │   ├── REVIEW_LANDSCAPE_2020_2025.md # Comparison against 6 recent reviews
+│   │   └── REVIEW_NOVELTY_ANALYSIS.md    # Novelty claims matrix
+│   ├── lca_tea/                          # LCA system boundaries & TEA models
+│   │   ├── FINAL_LCA_TEA_ASSUMPTIONS_AND_LIMITATIONS.md # Complete boundary assumptions
+│   │   ├── LCA_REVIEW.md                 # Cradle-to-grave boundary definitions
+│   │   ├── SCENARIO_COMPARISON.csv       # Multi-scenario grid sensitivity matrix
+│   │   └── TEA_REVIEW.md                 # Levelized cost modeling & CAPEX/OPEX
+│   ├── literature/                       # Bibliometric databases & coverage
+│   │   ├── BENCHMARK_PAPER_ANALYSIS.md   # Deep-dive of landmark 2020-2025 papers
+│   │   ├── FINAL_LITERATURE_COVERAGE_REPORT.md # Coverage synthesis report
+│   │   └── MASTER_LITERATURE_MATRIX.csv  # 32-column master benchmark matrix
+│   ├── methodology/                      # PRISMA review protocol
+│   │   └── LITERATURE_REVIEW_PROTOCOL.md # Systematic search queries & criteria
+│   ├── pathways/                         # 13 Technological pathway reports
+│   │   ├── Biotechnology_and_MES.md
+│   │   ├── Carbon_Nanomaterials.md
+│   │   ├── Dry_and_Bi_Reforming.md
+│   │   ├── Electrochemical_Reduction.md
+│   │   ├── Integrated_Capture_Conversion.md
+│   │   ├── Methanol.md
+│   │   ├── Mineralisation_and_Construction.md
+│   │   ├── Pharmaceutical_Applications.md
+│   │   ├── Photocatalytic_Conversion.md
+│   │   ├── Policy_and_Market_Analysis.md
+│   │   ├── Polycarbonates_and_DMC.md
+│   │   ├── Sustainability_LCA_TEA.md
+│   │   └── Urea_and_CN_Coupling.md
+│   ├── references/                       # Citation verification registers
+│   │   └── REFERENCE_VERIFICATION.csv    # 48 audited baseline citations
+│   └── tables/                           # Cross-pathway matrices & audits
+│       ├── CROSS_PATHWAY_TABLE.csv       # 13-pathway quantified comparison
+│       ├── FINAL_CROSS_PATHWAY_COMPARISON.csv # Expanded cross-pathway matrix
+│       └── TABLE_AUDIT.md                # Rebuilt table specifications
+├── scripts/                              # Reproducible Python generation modules
+│   ├── build_claim_register.py           # Generates CLAIM_REGISTER.csv
+│   ├── build_docs_and_qc.py              # Generates risk registers & QC reports
+│   ├── build_final_manuscript.py         # Compiles MANUSCRIPT_FINAL_RESEARCH_DRAFT.md
+│   ├── build_lca_tea.py                  # Generates LCA/TEA scenarios & reviews
+│   ├── build_literature_matrix.py        # Generates MASTER_LITERATURE_MATRIX.csv
+│   ├── build_pathway_reports.py          # Generates 13 pathway dossiers
+│   ├── build_reaction_database.py        # Generates REACTION_DATABASE_FINAL.csv
+│   ├── build_research_gaps.py            # Generates research gap & novelty reports
+│   └── build_tables_and_figures.py       # Generates cross-pathway tables & figure plans
+└── tests/                                # Automated test suite
+    ├── __init__.py                       # Test package initializer
+    ├── test_csv_integrity.py             # Validates RFC 4180 conformance and column counts
+    ├── test_docs.py                      # Validates markdown files and heading structure
+    ├── test_reactions.py                 # Validates chemical stoichiometry and thermodynamics
+    └── test_scripts.py                   # Validates CLI flags and script idempotency
 ```
 
 ---
 
-### 2.4 `research/` (Core Research Datasets & Synthesis Dossiers)
+## Root Governance & Configuration Manifest
 
-#### `research/audit/` (Manuscript & Code Audits)
-- `ORIGINAL_MANUSCRIPT_ANALYSIS.md`: Rigorous section-by-section audit of all 21 original manuscript sections documenting what the text says, scientific flaws, and necessary actions.
-- `SECTION_BY_SECTION_AUDIT.csv`: Tabular 21-row matrix assigning disposition statuses (`KEEP`, `UPDATE`, `REWRITE`, `MERGE`, `MOVE`, `VERIFY`, `REMOVE`).
-- `INITIAL_RESEARCH_PROBLEMS.md`: Foundational critique exposing the pro-coal thermodynamic fallacy, KS-21 solvent misattribution, and uncredited figures.
-- `PUBLICATION_RISK_REGISTER.md`: 10 fatal peer-review vulnerabilities identified in the baseline draft with corresponding executed mitigation protocols.
-- `FINAL_SCIENTIFIC_CONSISTENCY_AUDIT.md`: 15-point verification checklist evaluating thermodynamic consistency, mass balances, and citation traceability.
-- `REPOSITORY_ENGINEERING_AUDIT.md`: 12-dimension technical audit evaluating repository engineering rigor.
-- `REPOSITORY_MODERNIZATION_REPORT.md`: Comprehensive modernization report summarizing repository transition from raw draft to enterprise data engine.
-
-#### `research/chemistry/` (Reactions, Thermodynamics & Kinetics)
-- `REACTION_DATABASE.csv`: 25-column database of 22 balanced candidate reactions with calculated $\Delta H^\circ$, $\Delta G^\circ$, standard reduction potentials ($E^\circ$), and active sites.
-- `REACTION_MECHANISM_ANALYSIS.md`: Detailed chemical kinetics and intermediate surface analysis (e.g., oxygen-vacancy formate pathway vs stepped Cu(100) C–C coupling).
-- `NEW_REACTION_CANDIDATES.md`: Technical dossiers for 13 new-to-the-manuscript high-potential reactions (e.g., molten salt CNT synthesis, ethylene eCO₂R, tandem DMC synthesis).
-
-#### `research/evidence/` (Claims & Metric Normalization)
-- `CLAIM_REGISTER.csv`: 12-column matrix tracking 16 core claims from the original draft, auditing evidence sources, conflict status, and required revisions.
-- `METRIC_NORMALIZATION.md`: Mathematical formulation guide strictly decoupling Faradaic efficiency from single-pass conversion, carbonate crossover, and energy efficiency.
-- `EVIDENCE_COVERAGE_REPORT.md`: Quantitative report documenting PRISMA screening metrics, deduplication statistics, and 100% DOI verification rates.
-
-#### `research/figures/` (Visual Blueprints)
-- `FIGURE_AUDIT.md`: Forensic audit of original Figures 1–5 detailing copyright/provenance risks, resolution issues, and scientific shortcomings.
-- `FIGURE_PLANS.md`: High-resolution specifications and Matplotlib/Seaborn visualization scripts for 8 rebuilt publication figures.
-
-#### `research/gaps/` (Novelty & Competitive Review Landscape)
-- `REVIEW_LANDSCAPE_2020_2025.md`: Critical audit of 6 recent published reviews in *Chem. Rev.*, *Nat. Clim. Change*, and *J. CO2 Util.*, establishing specific gaps.
-- `RESEARCH_GAPS.md`: Deep dive into 10 unresolved industrial CCU bottlenecks (carbonate crossover, hydrogen footprint, electrode scaling, catalyst coking).
-- `REVIEW_NOVELTY_ANALYSIS.md`: Explicit 7-point novelty statement establishing the unique scientific contributions of our revised review.
-
-#### `research/lca_tea/` (Life-Cycle & Techno-Economics)
-- `LCA_REVIEW.md`: Cradle-to-grave LCA review covering system boundaries, electricity carbon intensity thresholds ($CI_{\text{grid}}$), and carbon permanence.
-- `TEA_REVIEW.md`: Techno-economic review modeling CAPEX, OPEX, electricity sensitivity curves, and Levelized Cost of Product (LCOP) vs. fossil parity.
-- `SCENARIO_COMPARISON.csv`: Multi-scenario matrix comparing emissions and costs across fossil baseline, 100% renewable electricity, and current national grid averages.
-
-#### `research/literature/` (Bibliometrics & Primary Literature)
-- `MASTER_LITERATURE_MATRIX.csv`: 32-column database cataloging 22 landmark primary benchmark papers published between 2020 and 2025.
-- `BENCHMARK_PAPER_ANALYSIS.md`: Exhaustive technical dissection of 9 landmark papers (*Science*, *Nature Energy*, *JACS*, *Nature Catalysis*).
-
-#### `research/methodology/` (Search Protocols)
-- `LITERATURE_REVIEW_PROTOCOL.md`: PRISMA-compliant reproducible literature search protocol detailing Boolean queries, database sources, and inclusion/exclusion criteria.
-
-#### `research/pathways/` (13 Dedicated Pathway Dossiers)
-- `Methanol.md`: Thermocatalytic hydrogenation, $\text{In}_2\text{O}_3/\text{ZrO}_2$ vacancy mechanics, commercial plant data (CRI Iceland, Shunli China).
-- `Urea_and_CN_Coupling.md`: Ammonium carbamate equilibria, Basaroff process kinetics, carbon fate analysis (100% re-release in 7–28 days).
-- `Electrochemical_Reduction.md`: Zero-gap MEA electrosynthesis of $\text{CO}$, $\text{HCOOH}$, $\text{C}_2\text{H}_4$, and carbonate crossover dynamics.
-- `Photocatalytic_Conversion.md`: Semiconductor Z-scheme photocatalysis, apparent quantum yield (AQY), and solar-to-chemical (STC) limitations.
-- `Dry_and_Bi_Reforming.md`: Dry ($\text{CO}_2+\text{CH}_4$) and bi-reforming, coke suppression mechanisms, and industrial CALCOR/SPARG processes.
-- `Polycarbonates_and_DMC.md`: Direct DMC synthesis with in-situ dehydrants, ring-opening copolymerization of epoxides into PPC and polyols.
-- `Carbon_Nanomaterials.md`: Debunking magnesiothermic combustion soot; high-temperature molten carbonate electrolysis (C2CNT) to pristine CNTs.
-- `Pharmaceutical_Applications.md`: Visible-light photoredox C–H carboxylation, flow chemistry, and active pharmaceutical ingredient (API) synthesis.
-- `Biotechnology_and_MES.md`: Acetogenic gas fermentation (LanzaTech *C. autoethanogenum*), microbial electrosynthesis (MES), and mass transfer limits.
-- `Mineralisation_and_Construction.md`: Ex-situ slag/fly-ash carbonation, in-situ basalt injection (Carbfix), and permanent thermodynamic trapping ($>10,000$ yrs).
-- `Integrated_Capture_Conversion.md`: Dual-function materials (DFMs) integrating alkali capture with Ru/Ni isothermal hydrogenation.
-- `Sustainability_LCA_TEA.md`: Synthesis of cross-pathway carbon abatement costs and global electricity consumption demands.
-- `Policy_and_Market_Analysis.md`: Regulatory drivers (EU RED II, US IRA 45Q/45V), carbon border adjustments (CBAM), and verifiable market sizing.
-
-#### `research/references/` (Citation Audits)
-- `REFERENCE_VERIFICATION.csv`: Comprehensive audit of all 48 citations in the baseline draft, identifying 8 off-topic citations, DOI errors, and publication dates.
-
-#### `research/tables/` (Rebuilt Tables)
-- `TABLE_AUDIT.md`: Critical audit of baseline Tables 1 and 2, defining the blueprint for 9 rebuilt high-density tables.
-- `CROSS_PATHWAY_TABLE.csv`: 14-column comparison matrix harmonizing all 13 CCU pathways across reactants, energy vector, TRL, rate metrics, and commercial status.
-
----
-
-### 2.5 `docs/` (Workflow Logs & Decision Records)
-- `RESEARCH_WORKFLOW.md`: Methodological timeline documenting the exact sequence of research and code execution.
-- `DECISION_LOG.md`: Traceable record of key scientific decisions (e.g., purge of pro-coal advocacy, correction of KS-21 solvent, speciation of formic acid vs formate).
-- `CHANGELOG.md`: Chronological log of all commits and generated files in the repository.
-
----
-
-### 2.6 `scripts/` (Automated Build Engine)
-- `build_literature_matrix.py`: Compiles `MASTER_LITERATURE_MATRIX.csv`.
-- `build_reaction_database.py`: Compiles `REACTION_DATABASE.csv`, `REACTION_MECHANISM_ANALYSIS.md`, and `NEW_REACTION_CANDIDATES.md`.
-- `build_pathway_reports.py`: Compiles all 13 research reports in `research/pathways/`.
-- `build_lca_tea.py`: Compiles `LCA_REVIEW.md`, `TEA_REVIEW.md`, and `SCENARIO_COMPARISON.csv`.
-- `build_tables_and_figures.py`: Compiles `TABLE_AUDIT.md`, `CROSS_PATHWAY_TABLE.csv`, `FIGURE_AUDIT.md`, and `FIGURE_PLANS.md`.
-- `build_research_gaps.py`: Compiles `REVIEW_LANDSCAPE_2020_2025.md`, `RESEARCH_GAPS.md`, and `REVIEW_NOVELTY_ANALYSIS.md`.
-- `build_claim_register.py`: Compiles `CLAIM_REGISTER.csv`.
-- `build_docs_and_qc.py`: Compiles `PUBLICATION_RISK_REGISTER.md`, `EVIDENCE_COVERAGE_REPORT.md`, `FINAL_SCIENTIFIC_CONSISTENCY_AUDIT.md`, `REVISION_PLAN.md`, `DECISION_LOG.md`, `CHANGELOG.md`, and `RESEARCH_WORKFLOW.md`.
+| File | Purpose | Format |
+|---|---|---|
+| `README.md` | Flagship project portal containing architecture, ASCII diagrams, data flows, and setup instructions. | CommonMark |
+| `LICENSE` | MIT License granting open-source distribution and use permissions. | Plain Text |
+| `CHANGELOG.md` | Canonical changelog tracking releases and historical changes according to Keep a Changelog. | CommonMark |
+| `CONTRIBUTING.md` | Guidelines for academic and open-source contributors, detailing PR workflows and DOI standards. | CommonMark |
+| `CODE_OF_CONDUCT.md` | Community code of conduct adapted from Contributor Covenant v2.1. | CommonMark |
+| `SECURITY.md` | Security policy detailing scientific data integrity, DOI immutability, and reporting timelines. | CommonMark |
+| `SUPPORT.md` | Support channels, triage workflows, and institutional contact information. | CommonMark |
+| `ROADMAP.md` | Research and engineering roadmap detailing completed and upcoming publication milestones. | CommonMark |
+| `ARCHITECTURE.md` | Multi-tier architectural specifications, data flow diagrams, and mathematical normalization engines. | CommonMark |
+| `API.md` | Programmatic Python API and CLI script execution reference. | CommonMark |
+| `PROJECT_STRUCTURE.md` | This document; complete repository structure and file taxonomy. | CommonMark |
+| `DEVELOPMENT.md` | Developer setup guide with toolchain prerequisites, build commands, and testing instructions. | CommonMark |
+| `DEPLOYMENT.md` | Archiving procedures for Zenodo, ChemRxiv preprint deposition, and versioning. | CommonMark |
+| `RELEASE.md` | Release management policy, SemVer 2.0.0 guidelines, and release checklist. | CommonMark |
+| `Makefile` | POSIX make automation for building, testing, linting, and formatting. | Makefile |
+| `pyproject.toml` | Standardized Python project configuration for Ruff, Pytest, and Mypy. | TOML |
+| `requirements.txt` | Production environment declaration (zero third-party runtime dependencies). | Requirements |
+| `requirements-dev.txt` | Development dependencies for local testing, linting, and typing. | Requirements |
+| `.editorconfig` | Cross-editor indentation, newline, and charset settings. | INI |

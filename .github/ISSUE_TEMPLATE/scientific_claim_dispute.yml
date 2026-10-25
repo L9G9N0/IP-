@@ -1,0 +1,40 @@
+name: "Scientific Claim Dispute"
+description: "Dispute a quantitative metric, catalyst benchmark, or chemical equation."
+title: "[DISPUTE]: "
+labels: ["scientific-dispute", "data-integrity"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Academic accuracy is our highest priority. If you have detected an empirical discrepancy, conflicting peer-reviewed benchmark, or thermodynamic error, please file this dispute.
+  - type: input
+    id: dataset_reference
+    attributes:
+      label: Dataset / Pathway Reference
+      description: Which dataset, row ID, or pathway dossier contains the disputed value?
+      placeholder: "e.g., REACTION_DATABASE_FINAL.csv, RXN-04 or research/pathways/Methanol.md"
+    validations:
+      required: true
+  - type: textarea
+    id: current_claim
+    attributes:
+      label: Current Reported Metric / Equation
+      description: What is currently documented in the repository?
+      placeholder: "Quote the current metric, catalyst formulation, or reaction stoichiometry."
+    validations:
+      required: true
+  - type: textarea
+    id: counter_evidence
+    attributes:
+      label: Conflicting Evidence & Primary Literature
+      description: Provide the primary peer-reviewed citation and DOI demonstrating the discrepancy.
+      placeholder: "Author (Year), Journal, DOI: 10.xxxx/yyyy, Page/Figure reference."
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_correction
+    attributes:
+      label: Recommended Correction
+      description: What exact value, unit, or equation should replace the current record?
+    validations:
+      required: true

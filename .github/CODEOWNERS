@@ -1,0 +1,22 @@
+# CODEOWNERS for CCU Evidence Engine & Research Platform
+# Lines starting with '#' are comments.
+# Each line is a file pattern followed by one or more owners.
+
+# Global default owners
+* @L9G9N0
+
+# Scientific datasets & research stores
+/research/ @L9G9N0
+/research/chemistry/ @L9G9N0
+/research/literature/ @L9G9N0
+/research/evidence/ @L9G9N0
+/research/lca_tea/ @L9G9N0
+
+# Programmatic Python scripts & build engines
+/scripts/ @L9G9N0
+
+# Manuscript drafts & revision plans
+/manuscript/ @L9G9N0
+
+# CI/CD and GitHub configuration
+/.github/ @L9G9N0

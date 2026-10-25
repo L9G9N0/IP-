@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ccu-evidence-engine"
+version = "1.2.0"
+description = "Automated scientific audit engine, balanced reaction database, and literature synthesis platform for Carbon Dioxide Utilisation (CCU) research."
+readme = "README.md"
+authors = [
+    { name = "Anusha Rana", email = "anusharana510@gmail.com" },
+    { name = "Rishab Raghuvanshi", email = "rishab22384@iiitd.ac.in" },
+    { name = "Amit Beniwal", email = "amitb@iiitd.ac.in" },
+    { name = "Durlubh Kumar Sharma", email = "dsharma@iiitd.ac.in" }
+]
+license = { text = "MIT" }
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+keywords = [
+    "carbon-dioxide-utilisation",
+    "ccu",
+    "decarbonization",
+    "chemical-engineering",
+    "electrocatalysis",
+    "life-cycle-assessment",
+    "techno-economic-analysis",
+    "net-zero"
+]
+
+[project.urls]
+Homepage = "https://github.com/L9G9N0/IP-"
+Documentation = "https://github.com/L9G9N0/IP-#readme"
+Repository = "https://github.com/L9G9N0/IP-.git"
+Issues = "https://github.com/L9G9N0/IP-/issues"
+Changelog = "https://github.com/L9G9N0/IP-/blob/main/CHANGELOG.md"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "dist",
+    "build"
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4"]
+ignore = ["E501"] # line length handled by formatter
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --durations=10"
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true

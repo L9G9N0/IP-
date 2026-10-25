@@ -1,79 +1,74 @@
-# Release Notes: v1.0.0-audit
+# Release Management & Versioning Strategy
 
-> **Release Tag:** `v1.0.0-audit`  
-> **Release Name:** Canonical Scientific Audit, Evidence Database & Revision Architecture  
-> **Institution:** Indraprastha Institute of Information Technology Delhi (IIIT-Delhi)  
-> **Release Date:** October 2026  
-> **Git Remote:** `https://github.com/L9G9N0/IP-.git`  
-
----
-
-## 1. Executive Summary
-
-We are pleased to announce the formal release of **v1.0.0-audit** of the Carbon Dioxide Utilisation (CCU) Evidence Engine & Research Review Platform. 
-
-This release marks the successful completion of **Phases 0 through 12** of our scientific overhaul of the review manuscript:
-> *“Advancements in Carbon Dioxide Utilisation: Pathways to Sustainable Chemicals, Fuels, and Materials for a Net-Zero Future”*
-
-Through this release, the project transitions from an unverified 26-page working paper into an enterprise-grade, reproducible scientific data engine ready for full LaTeX manuscript drafting and submission to leading peer-reviewed journals (*Chemical Reviews*, *Nature Catalysis*, *Energy & Environmental Science*).
+> **Document:** `RELEASE.md`  
+> **Platform:** Evidence-Based CCU Research & Data Engine  
+> **Status:** Canonical Release Strategy  
+> **Last Updated:** October 2026  
 
 ---
 
-## 2. Key Deliverables & Research Achievements
+## Table of Contents
 
-### 2.1 Complete Forensic Audit of Baseline Manuscript
-- Audited all 21 sections of the original draft (`research/audit/ORIGINAL_MANUSCRIPT_ANALYSIS.md`).
-- Established 21-row disposition matrix (`SECTION_BY_SECTION_AUDIT.csv`).
-- Identified and mitigated 10 fatal peer-review vulnerabilities (`PUBLICATION_RISK_REGISTER.md`), including:
-  - Complete elimination of pro-coal advocacy claims.
-  - Reassignment of KS-21 solvent from hydrogenation to capture technologies.
-  - Correction of ammonium carbamate formula to $\text{NH}_2\text{COONH}_4$.
-  - Debunking magnesiothermic soot and replacing it with molten carbonate CNT electrosynthesis.
-  - Removal of 8 off-topic citations on coal bioleaching and fruit fermentation.
-
-### 2.2 Relational Literature & Reaction Databases
-- **Master Literature Matrix (`research/literature/MASTER_LITERATURE_MATRIX.csv`):** 32 standardized columns capturing 22 primary 2020–2025 research benchmarks with 100% verified DOIs.
-- **Reaction Database (`research/chemistry/REACTION_DATABASE.csv`):** 25 columns covering 22 balanced candidate reactions with standard enthalpy ($\Delta H^\circ$), Gibbs energy ($\Delta G^\circ$), standard reduction potentials ($E^\circ$), and active-site mechanisms.
-- **Reference Verification Matrix (`research/references/REFERENCE_VERIFICATION.csv`):** Comprehensive audit of all 48 baseline citations.
-- **Cross-Pathway Comparison Table (`research/tables/CROSS_PATHWAY_TABLE.csv`):** Harmonized comparison of 13 CCU pathways across reactants, energy vectors, TRL, rate metrics, and commercial pilot status.
-- **Claim Register (`research/evidence/CLAIM_REGISTER.csv`):** 16-point traceability matrix tracking baseline manuscript claims against empirical literature.
-
-### 2.3 Synthesis Dossiers & Visual Blueprints
-- **13 Pathway Research Reports (`research/pathways/*.md`):** Deep dives covering thermocatalytic hydrogenation, eCO₂R, photocatalysis, dry/bi-reforming, DMC, polycarbonates, carbon nanomaterials, pharma, biotechnology/MES, mineralisation, ICCC, sustainability, and policy.
-- **Metric Normalization (`research/evidence/METRIC_NORMALIZATION.md`):** Mathematical guide strictly decoupling Faradaic efficiency from single-pass conversion, carbonate crossover, and energy efficiency.
-- **LCA & TEA Models (`research/lca_tea/`):** Cradle-to-grave boundary models establishing grid carbon intensity break-even thresholds ($CI_{\text{grid}} < 120\text{ g/kWh}$) and LCOP sensitivity matrices.
-- **Figure Specifications (`research/figures/FIGURE_PLANS.md`):** Production plans and Python Matplotlib scripts for 8 publication-grade vector figures to replace the 5 baseline bitmaps.
-- **Master Revision Blueprint (`manuscript/revisions/REVISION_PLAN.md`):** Comprehensive 21-section blueprint guiding the forthcoming LaTeX rewrite.
-
-### 2.4 Automated Python Build Engine
-- 8 idempotent Python scripts in `scripts/` allowing deterministic byte-for-byte regeneration of all datasets and dossiers.
-- Zero external runtime dependencies; 100% compliant with Python 3.11, 3.12, 3.13, and 3.14.
+- [Versioning Specification (SemVer 2.0.0)](#1-versioning-specification-semver-200)
+- [Release Cadence & Channels](#2-release-cadence--channels)
+- [Release Checklist & Step-by-Step Procedure](#3-release-checklist--step-by-step-procedure)
 
 ---
 
-## 3. Breaking Changes & Scientific Corrections
+## 1. Versioning Specification (SemVer 2.0.0)
 
-| Component | Baseline Manuscript State | v1.0.0-audit Corrected State | Impact |
-|---|---|---|---|
-| **Climate Role of CCU** | Claimed CCU enables continued coal combustion and avoids renewables | Purged; reframed strictly as circular carbon management for hard-to-electrify chemicals/aviation | Prevents immediate desk rejection |
-| **KS-21 Attribution** | Listed as a hydrogenation catalyst with 88% conversion | Reassigned to Section 5 under solvent absorption capture (MHI amine) | Eliminates domain error |
-| **Formic Acid Speciation** | Conflated formic acid (HCOOH) with formate salts (HCOO⁻) | Separated; featured solid-state electrolyte cell producing 20 wt% pure liquid acid | Eliminates salt waste issue |
-| **Graphene Synthesis** | Claimed burning Mg in CO₂ yields pristine graphene | Debunked soot/defects; featured molten salt C2CNT process (98% CE) | Scientific rigor |
-| **Electrochemical Table** | Listed CO₂ as an electrochemical reduction product | Corrected typo to Carbon Monoxide (CO) | Editorial quality |
-| **Market Valuation** | Stated CCU market as USD 6.45 million in 2026 | Corrected unit typo to USD 6.45 billion | Market data provenance |
+This repository follows [Semantic Versioning 2.0.0](https://semver.org/):
 
----
+$$\text{MAJOR}.\text{MINOR}.\text{PATCH}$$
 
-## 4. Verification & Testing Summary
-
-All generated datasets have been audited and verified:
-- **RFC 4180 CSV Conformance:** 100% passed across all 6 CSV matrices.
-- **DOI Verification:** 100% of claims and reactions link to active, validated DOIs.
-- **Thermodynamic Consistency:** 100% of chemical reactions are stoichiometrically balanced and thermodynamically classified.
-- **Git State:** Synchronized with remote `origin/main` at commit `e06eeb1`.
+- **MAJOR (vX.0.0):** Significant structural schema changes in relational CSV matrices, architectural redesigns of data generation pipelines, or breaking modifications to script CLI interfaces.
+- **MINOR (v0.X.0 / v1.X.0):** Addition of new benchmark papers, newly verified chemical reaction pathways, new pathway dossiers, or non-breaking feature enhancements in build scripts.
+- **PATCH (v1.0.X):** Correction of typographical errors, DOI link updates, chemical stoichiometric adjustments, or minor bug fixes in scripts.
 
 ---
 
-## 5. Next Steps
+## 2. Release Cadence & Channels
 
-With the audit and data engine finalized, the research team is initiating **Phase 13 (Overleaf LaTeX Manuscript Drafting)** and **Phase 14 (High-Resolution Vector Graphic Compilation)** leading to journal submission in late 2026.
+```mermaid
+flowchart LR
+    Dev["Feature Development<br/>(feature/* branches)"] --> PR["Pull Request Review<br/>(CI validation + Peer check)"]
+    PR --> Main["main Branch<br/>(Release Candidate)"]
+    Main --> Tag["Git Tag & Release<br/>(vX.Y.Z)"]
+    Tag --> Zenodo["Zenodo Minting<br/>(Permanent Citable DOI)"]
+    Tag --> ChemRxiv["Preprint Update<br/>(ChemRxiv / arXiv)"]
+```
+
+1. **Continuous Updates (`main` branch):** All tested and peer-reviewed pull requests are merged directly into `main`.
+2. **Milestone Releases:** Tagged releases correspond to manuscript review milestones, journal revisions, or major annual literature updates.
+3. **Zenodo Archiving:** Every official GitHub release triggers automated archiving to **Zenodo**, generating a permanent, citable academic DOI.
+
+---
+
+## 3. Release Checklist & Step-by-Step Procedure
+
+Maintainers follow this protocol for all new releases:
+
+1. **Verify Test Suite & RFC 4180 Compliance:**
+   ```bash
+   make test
+   make lint
+   make typecheck
+   ```
+2. **Regenerate Authoritative Artifacts:**
+   ```bash
+   make build
+   ```
+3. **Update Version Numbers & Changelog:**
+   - Update `pyproject.toml` version string.
+   - Update `CHANGELOG.md` with release notes and date under a new version heading.
+4. **Commit & Create Tag:**
+   ```bash
+   git commit -am "chore(release): prepare v1.2.1"
+   git tag -a v1.2.1 -m "Release v1.2.1: Updated benchmark metrics and schema fixes"
+   git push origin main --tags
+   ```
+5. **Publish GitHub Release:**
+   - Draft release notes on GitHub summarizing key scientific and codebase improvements.
+   - Attach generated CSV dataset archives.
+6. **Verify Zenodo Ingestion:**
+   - Confirm that the release tarball is ingested by Zenodo and assigned an immutable concept DOI.

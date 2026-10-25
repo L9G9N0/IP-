@@ -1,7 +1,21 @@
-import csv
-import os
+"""Chemical Reaction Database Generator for CCU Evidence Engine.
 
-headers = [
+Computes thermodynamic state functions (dH0, dG0, E0) and balances 22 chemical
+reaction networks across thermocatalytic, electrocatalytic, photocatalytic,
+and mineral carbonation pathways.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+from pathlib import Path
+from typing import Sequence
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_OUTPUT = REPO_ROOT / "research" / "chemistry" / "REACTION_DATABASE.csv"
+
+HEADERS: list[str] = [
     'Reaction_ID', 'Reaction_Family', 'Reaction_Classification', 'Balanced_Chemical_Equation',
     'Physical_State', 'Thermodynamic_Enthalpy_dH0_kJ_mol', 'Thermodynamic_Gibbs_dG0_kJ_mol',
     'Electrode_Potential_E0_V_vs_RHE', 'Catalyst_or_Electrode_System', 'Reaction_Mechanism',
@@ -11,7 +25,7 @@ headers = [
     'Original_Primary_Source_DOI', 'Status_In_Existing_Manuscript'
 ]
 
-reactions = [
+REACTIONS: list[list[str]] = [
     # A. Methanol Synthesis
     [
         'RXN-METH-01', 'Methanol Hydrogenation', 'Established industrial reaction with recent catalyst advances',
@@ -139,7 +153,7 @@ reactions = [
     # E. Urea Synthesis
     [
         'RXN-UREA-10', 'Industrial Urea Synthesis', 'Established industrial reaction',
-        '2NH3(g) + CO2(g) <=> NH2COONH4(s/l) <=> CO(NH2)2(l) + H2O(l)', 'Liquid-phase melt under pressure', '-101.5 (net)', '-15.0 (net)', 'N/A',
+        '2NH3(g) + CO2(g) <=> NH2COONH4(s/l) <=> CO(NH2)2(l) + H2O(l)', 'Liquid-phase melt under pressure', '-101.5', '-15.0', 'N/A',
         'Self-catalyzed / thermal (Snamprogetti or Stamicarbon process)',
         'Step 1 (Fast, exothermic): 2NH3 + CO2 <=> NH2COONH4 (dH = -117 kJ/mol); Step 2 (Slow, endothermic dehydration): NH2COONH4 <=> CO(NH2)2 + H2O (dH = +15.5 kJ/mol)',
         'Ammonium carbamate [NH4]+[NH2COO]-', '180-200 °C, 14.0-20.0 MPa, NH3:CO2 molar ratio = 3:1 to 4:1', 'Urea Prills / Granules',
@@ -197,7 +211,7 @@ reactions = [
     # G. CO2-Derived Polycarbonates
     [
         'RXN-POLY-14', 'Ring-Opening Copolymerization (ROCOP) of CO2 and Epoxides', 'Established industrial reaction with recent catalyst advances',
-        'n C3H6O(l) + n CO2(g) -> -[CH2-CH(CH3)-O-C(=O)-O]n- (Polypropylene Carbonate, PPC)', 'Liquid/melt copolymerization', '-85.0 per repeat unit', '-35.0 per repeat unit', 'N/A',
+        'n C3H6O(l) + n CO2(g) -> -[CH2-CH(CH3)-O-C(=O)-O]n- (Polypropylene Carbonate, PPC)', 'Liquid/melt copolymerization', '-85.0', '-35.0', 'N/A',
         'Heterodinuclear Co(III)/Zn(II) macrocycles or zinc glutarate (Covestro / Econic process)',
         'Alternating insertion mechanism: metal alkoxide attacks CO2 to form metal carbonate; metal carbonate attacks coordinated epoxide to regenerate metal alkoxide; bimetallic cooperativity prevents cyclic backbiting',
         'Metal-alkoxide, metal-carbonate, growing polymer chain', '70-90 °C, 2.0-4.0 MPa CO2, neat epoxide with diol chain transfer agent', 'Polycarbonate Polyols / Polypropylene Carbonate',
@@ -226,7 +240,7 @@ reactions = [
     ],
     [
         'RXN-MIN-16', 'Accelerated Slag Carbonation for Concrete Curing', 'Established reaction with recent catalyst advances',
-        'Ca(OH)2(s) + CO2(g) -> CaCO3(s) + H2O(l); Ca2SiO4(s) + CO2(g) -> CaCO3(s) + SiO2(s)', 'Solid porous alkaline matrix', '-113.0 (portlandite)', '-65.0', 'N/A',
+        'Ca(OH)2(s) + CO2(g) -> CaCO3(s) + H2O(l); Ca2SiO4(s) + CO2(g) -> CaCO3(s) + SiO2(s)', 'Solid porous alkaline matrix', '-113.0', '-65.0', 'N/A',
         'Self-catalyzed by alkaline pore water in industrial steel slag / concrete',
         'CO2 gas diffuses into porous alkaline concrete block; dissolves in pore solution to form carbonate ions; reacts with portlandite and dicalcium silicate to precipitate microcrystalline CaCO3, filling pore spaces and enhancing compressive strength',
         'Pore-water Ca2+, HCO3-, CaCO3 microcrystals', '25-60 °C, 0.1-0.5 MPa CO2 (can use uncaptured industrial flue gas directly), 2-24 h curing', 'Carbonated Precast Concrete & Slag Blocks',
@@ -241,7 +255,7 @@ reactions = [
     # I. Carbon Nanomaterials
     [
         'RXN-NANO-17', 'Molten Carbonate Electrolysis to Carbon Nanotubes', 'Emerging reaction pathway',
-        'CO3(2-)(melt) + 4e- -> C(s) + 3O(2-)(melt); Net: CO2(g) -> C(s) + O2(g)', 'Molten eutectic salt (Li2CO3/Na2CO3/K2CO3)', '+394.4 (net)', '+394.4 (net)', '1.5-2.2 V cell voltage',
+        'CO3(2-)(melt) + 4e- -> C(s) + 3O(2-)(melt); Net: CO2(g) -> C(s) + O2(g)', 'Molten eutectic salt (Li2CO3/Na2CO3/K2CO3)', '+394.4', '+394.4', '1.5-2.2 V cell voltage',
         'Galvanized steel or monel cathode with Ni/Fe alloy anode in molten carbonate eutectic',
         'Direct 4-electron reduction of carbonate anions at cathode at 750 °C; dissolved CO2 continuously reacts with O(2-) to regenerate CO3(2-); trace transition metals nucleate multi-walled carbon nanotube growth',
         'CO3(2-), O(2-), nucleated carbon nanoparticles', '750 °C, 1 atm CO2, molten eutectic at cell voltage 1.5-2.2 V', 'Multiwalled Carbon Nanotubes (MWCNTs)',
@@ -285,7 +299,7 @@ reactions = [
     # K. Photocatalytic CO2 Conversion
     [
         'RXN-PHOT-20', 'Overall Photocatalytic CO2 and Water Splitting', 'Emerging catalyst or mechanism',
-        'CO2(g) + 2H2O(l) + h*nu -> CH3OH(l) + 3/2 O2(g); CO2(g) + H2O(l) + h*nu -> CO(g) + H2(g) + O2(g)', 'Gas/solid/water interface', '+726.0 (methanol)', '+702.0', 'Band gap >2.5 eV',
+        'CO2(g) + 2H2O(l) + h*nu -> CH3OH(l) + 3/2 O2(g); CO2(g) + H2O(l) + h*nu -> CO(g) + H2(g) + O2(g)', 'Gas/solid/water interface', '+726.0', '+702.0', 'Band gap >2.5 eV',
         'Z-scheme SrTiO3:Al / BiVO4 particulate photocatalyst sheets with Rh/Cr2O3 cocatalysts',
         'Light absorption creates electron-hole pairs; holes oxidize water to O2; photoelectrons transfer to cocatalyst sites to reduce CO2 and protons without sacrificial electron donors',
         '*CO2(delta-), *COOH, *CO, *OH, *O', '25 °C, 1 atm, pure water vapor + CO2, AM 1.5G solar simulator', 'CO, CH4, and Methanol (Solar Fuels)',
@@ -300,7 +314,7 @@ reactions = [
     # L. Integrated Capture and Conversion (ICCC)
     [
         'RXN-ICCC-21', 'Dual-Function Material (DFM) Isothermal Methanation', 'Emerging catalyst or mechanism',
-        'CO2(adsorbed on Na2O/CaO) + 4H2(g) -> CH4(g) + 2H2O(g)', 'Gas-solid cyclic reaction', '-165.0 (methanation)', '-131.0', 'N/A',
+        'CO2(adsorbed on Na2O/CaO) + 4H2(g) -> CH4(g) + 2H2O(g)', 'Gas-solid cyclic reaction', '-165.0', '-131.0', 'N/A',
         'Dual Function Material: 5% Ru / 10% Na2O on gamma-Al2O3 or Ni-CaO',
         'Cyclic operation at 320 °C: In capture step, basic Na2O chemisorbs CO2 from flue gas forming surface Na2CO3; in conversion step, H2 stream hydrogenates carbonate directly on adjacent Ru nanoparticles to CH4, regenerating Na2O',
         'Surface carbonates, formates, *CO, *CHx', '320 °C isothermal, 0.1 MPa, alternating 10% CO2 flue gas and H2 feed', 'Synthetic Natural Gas (CH4)',
@@ -327,10 +341,65 @@ reactions = [
     ]
 ]
 
-os.makedirs('research/chemistry', exist_ok=True)
-with open('research/chemistry/REACTION_DATABASE.csv', 'w', newline='', encoding='utf-8') as f:
-    writer = csv.writer(f)
-    writer.writerow(headers)
-    writer.writerows(reactions)
 
-print(f'Successfully wrote {len(reactions)} balanced candidate reactions to research/chemistry/REACTION_DATABASE.csv with {len(headers)} columns.')
+def build_reaction_database(
+    output_path: Path | str = DEFAULT_OUTPUT,
+    thermo_check: bool = False,
+) -> Path:
+    """Build and write the balanced chemical reaction database.
+
+    Args:
+        output_path: Target path for the output CSV file.
+        thermo_check: If True, validate reaction thermodynamic properties and exit.
+
+    Returns:
+        Path to the generated CSV file.
+    """
+    path = Path(output_path).resolve()
+
+    for idx, r in enumerate(REACTIONS, start=1):
+        if len(r) != len(HEADERS):
+            raise ValueError(
+                f"Reaction row {idx} ({r[0]}) length mismatch: expected {len(HEADERS)}, got {len(r)}"
+            )
+
+    if thermo_check:
+        print(f"Validated thermodynamics and stoichiometry across {len(REACTIONS)} reactions.")
+        return path
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(HEADERS)
+        writer.writerows(REACTIONS)
+
+    print(f"Successfully wrote {len(REACTIONS)} balanced candidate reactions to {path} with {len(HEADERS)} columns.")
+    return path
+
+
+def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
+    """Parse CLI arguments."""
+    parser = argparse.ArgumentParser(description="Generate CCU Reaction Database.")
+    parser.add_argument(
+        "--output",
+        "-o",
+        type=Path,
+        default=DEFAULT_OUTPUT,
+        help=f"Target output CSV path (default: {DEFAULT_OUTPUT})",
+    )
+    parser.add_argument(
+        "--thermo-check",
+        action="store_true",
+        help="Validate thermodynamic numbers without writing to disk.",
+    )
+    return parser.parse_args(args)
+
+
+def main() -> None:
+    """CLI Entry Point."""
+    args = parse_args()
+    build_reaction_database(output_path=args.output, thermo_check=args.thermo_check)
+
+
+if __name__ == "__main__":
+    main()

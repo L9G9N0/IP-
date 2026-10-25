@@ -7,6 +7,18 @@
 
 ---
 
+## Table of Contents
+
+- [Architectural Philosophy & Design Principles](#1-architectural-philosophy--design-principles)
+- [Multi-Tier System Architecture](#2-multi-tier-system-architecture)
+- [Data Flow & Processing Pipeline](#3-data-flow--processing-pipeline)
+- [Database Relational Schema & Linkages](#4-database-relational-schema--linkages)
+- [Mathematical Normalization Engine](#5-mathematical-normalization-engine)
+- [Verification of Architecture & Scope](#6-verification-of-architecture--scope)
+- [Quality Assurance & Consistency Auditing](#7-quality-assurance--consistency-auditing)
+
+---
+
 ## 1. Architectural Philosophy & Design Principles
 
 The Carbon Dioxide Utilisation (CCU) Review Platform is designed as an **evidence-based scientific data automation engine**. In conventional review paper workflows, research groups accumulate unsystematic notes, unverified PDF annotations, and loose citation bibliographies, leading to severe citation drift, metric conflation, and unverified quantitative claims.

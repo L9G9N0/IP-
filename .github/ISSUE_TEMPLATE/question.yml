@@ -1,0 +1,24 @@
+name: "Question"
+description: "Ask a question about using the datasets, running scripts, or manuscript methodologies."
+title: "[QUESTION]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question about the CCU Evidence Engine or our research methodology? Let us know below!
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like to know or clarify?
+      placeholder: "e.g., How was the carbonate crossover fraction calculated in the electrochemical reduction pathway?"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any background information, relevant paper citations, or commands you have tried.
+    validations:
+      false

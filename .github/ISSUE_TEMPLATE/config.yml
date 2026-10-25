@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "Academic Collaboration & Inquiries"
+    url: "mailto:anusharana510@gmail.com"
+    about: "For formal institutional partnerships and peer-review correspondence."
+  - name: "GitHub Discussions"
+    url: "https://github.com/L9G9N0/IP-/discussions"
+    about: "Join community discussions on CCU research, catalyst benchmarks, and policy outlays."

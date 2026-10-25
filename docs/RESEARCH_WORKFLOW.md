@@ -52,5 +52,5 @@
                                  - Created PUBLICATION_RISK_REGISTER.md
                                  - Created EVIDENCE_COVERAGE_REPORT.md
                                  - Created FINAL_SCIENTIFIC_CONSISTENCY_AUDIT.md
-                                 - Created REVISION_PLAN.md, DECISION_LOG.md, CHANGELOG.md, README.md
+                                 - Created REVISION_PLAN.md, DECISION_LOG.md, CHANGELOG.md
 ```

@@ -1,10 +1,29 @@
-import os
+"""Research Gaps and Novelty Landscape Generator for CCU Evidence Engine.
 
-os.makedirs('research/gaps', exist_ok=True)
+Generates:
+- research/gaps/REVIEW_LANDSCAPE_2020_2025.md
+- research/gaps/RESEARCH_GAPS.md
+- research/gaps/REVIEW_NOVELTY_ANALYSIS.md
+"""
 
-# 1. REVIEW_LANDSCAPE_2020_2025.md
-with open('research/gaps/REVIEW_LANDSCAPE_2020_2025.md', 'w', encoding='utf-8') as f:
-    f.write(r'''# Review Landscape (2020–2025): Comparative Audit of Existing CCU Reviews
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+from typing import Sequence
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_OUTPUT_DIR = REPO_ROOT / "research" / "gaps"
+
+
+def build_research_gaps(output_dir: Path | str = DEFAULT_OUTPUT_DIR) -> None:
+    """Generate review landscape, research gaps, and novelty analysis."""
+    out_dir = Path(output_dir).resolve()
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # 1. REVIEW_LANDSCAPE_2020_2025.md
+    with open(out_dir / "REVIEW_LANDSCAPE_2020_2025.md", "w", encoding="utf-8") as f:
+        f.write(r"""# Review Landscape (2020–2025): Comparative Audit of Existing CCU Reviews
 
 **Document:** `research/gaps/REVIEW_LANDSCAPE_2020_2025.md`  
 **Execution Date:** October 2026
@@ -65,11 +84,11 @@ To establish a defensible, non-superficial novelty claim, we audited 8 prominent
 | **Grid CI Thresholds Explicit** | No | No | No | Partial | Yes | **Harmonized** |
 | **Carbon Permanence Hierarchy** | No | No | No | Moderate | High | **Explicit Durability** |
 | **De-Bunking Flawed Paradigms** | No | No | No | No | No | **Rigorous Scientific Rebuttal** |
-''')
+""")
 
-# 2. RESEARCH_GAPS.md
-with open('research/gaps/RESEARCH_GAPS.md', 'w', encoding='utf-8') as f:
-    f.write(r'''# Research Gaps & Unresolved Scientific Challenges in CO₂ Utilisation
+    # 2. RESEARCH_GAPS.md
+    with open(out_dir / "RESEARCH_GAPS.md", "w", encoding="utf-8") as f:
+        f.write(r"""# Research Gaps & Unresolved Scientific Challenges in CO₂ Utilisation
 
 **Document:** `research/gaps/RESEARCH_GAPS.md`  
 **Execution Date:** October 2026
@@ -102,11 +121,11 @@ with open('research/gaps/RESEARCH_GAPS.md', 'w', encoding='utf-8') as f:
 ### Gap 5: Upstream Embodied Carbon in "Exotic" Reduction Routes
 - **Problem:** As demonstrated by our audit of magnesiothermic combustion ($\text{CO}_2 + 2\text{Mg} \rightarrow 2\text{MgO} + \text{C}$), reduction routes requiring metallic reductants ($\text{Mg}, \text{Al}, \text{Na}$) or stoichiometric organometallics (Grignard reagents) consume materials whose upstream smelting emits far more $\text{CO}_2$ than the reaction sequesters.
 - **Unresolved Challenge:** Eliminating stoichiometric sacrificial metal reagents in favor of direct electrochemical, photoredox, or green $\text{H}_2$ reduction.
-''')
+""")
 
-# 3. REVIEW_NOVELTY_ANALYSIS.md
-with open('research/gaps/REVIEW_NOVELTY_ANALYSIS.md', 'w', encoding='utf-8') as f:
-    f.write(r'''# Review Novelty Analysis: The Unique Scientific Contribution of this Work
+    # 3. REVIEW_NOVELTY_ANALYSIS.md
+    with open(out_dir / "REVIEW_NOVELTY_ANALYSIS.md", "w", encoding="utf-8") as f:
+        f.write(r"""# Review Novelty Analysis: The Unique Scientific Contribution of this Work
 
 **Document:** `research/gaps/REVIEW_NOVELTY_ANALYSIS.md`  
 **Execution Date:** October 2026
@@ -135,6 +154,29 @@ This review bridges the critical gap between **molecular-level catalytic mechani
    - Replaces vague "sequestration" claims with a 4-tier durability classification: Short-Lived ($<6$ months), Medium-Lived (1–10 years), Long-Lived (10–50 years), and Permanent ($>1,000–10,000$ years).
 5. **Direct Integration of Landmark 2020–2025 Benchmarks:**
    - Integrates 1,000-hour pure-water MEA ethylene electrolysis (2024), vacancy-mediated $\text{In}_2\text{O}_3$ 100% methanol selectivity (2020), solid-state electrolyte pure formic acid flow cells (2020), and dual-function reactive capture materials (2021).
-''')
+""")
 
-print('Successfully generated REVIEW_LANDSCAPE_2020_2025.md, RESEARCH_GAPS.md, and REVIEW_NOVELTY_ANALYSIS.md.')
+    print(f"Successfully generated review landscape, research gaps, and novelty analysis in {out_dir}.")
+
+
+def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
+    """Parse CLI arguments."""
+    parser = argparse.ArgumentParser(description="Generate CCU Research Gaps and Novelty Reports.")
+    parser.add_argument(
+        "--output-dir",
+        "-o",
+        type=Path,
+        default=DEFAULT_OUTPUT_DIR,
+        help="Target output directory for gap reports.",
+    )
+    return parser.parse_args(args)
+
+
+def main() -> None:
+    """CLI Entry Point."""
+    args = parse_args()
+    build_research_gaps(output_dir=args.output_dir)
+
+
+if __name__ == "__main__":
+    main()

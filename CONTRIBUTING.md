@@ -7,97 +7,149 @@
 
 ---
 
-## 1. Welcome & Academic Contribution Philosophy
+## Table of Contents
 
-Thank you for your interest in contributing to the **Carbon Dioxide Utilisation (CCU) Evidence Engine & Review Platform** at IIIT-Delhi. 
-
-This repository bridges cutting-edge catalytic chemistry with automated data engineering. Because all data directly feeds into peer-reviewed scientific publications, **we enforce strict standards of evidence, thermodynamic consistency, and data provenance**.
-
-We welcome contributions from chemists, chemical engineers, computational researchers, and open-source scientific developers.
+- [Welcome & Philosophy](#welcome--philosophy)
+- [Code of Conduct](#code-of-conduct)
+- [Non-Negotiable Contribution Rules](#non-negotiable-contribution-rules)
+- [Contribution Pathways](#contribution-pathways)
+  - [Submitting New Literature Benchmarks](#submitting-new-literature-benchmarks)
+  - [Adding or Correcting Chemical Reactions](#adding-or-correcting-chemical-reactions)
+  - [Improving Documentation & Dossiers](#improving-documentation--dossiers)
+- [Local Development Workflow](#local-development-workflow)
+  - [Environment Setup](#environment-setup)
+  - [Running Build Scripts](#running-build-scripts)
+  - [Automated Testing & Linting](#automated-testing--linting)
+- [Git Commit & Pull Request Standards](#git-commit--pull-request-standards)
+  - [Conventional Commits](#conventional-commits)
+  - [Pull Request Checklist](#pull-request-checklist)
+- [Peer Review & Acceptance Process](#peer-review--acceptance-process)
 
 ---
 
-## 2. Core Contribution Principles
+## Welcome & Philosophy
 
-Before submitting any proposed changes, ensure your contributions adhere to our three non-negotiable principles:
+Thank you for your interest in contributing to the **Carbon Dioxide Utilisation (CCU) Evidence Engine & Research Platform** at Indraprastha Institute of Information Technology Delhi (IIIT-Delhi).
 
-1. **Strict DOI Traceability:** No performance number (conversion, selectivity, Faradaic efficiency, yield) can enter the datasets without an active, verified Digital Object Identifier (DOI) from a peer-reviewed journal.
-2. **Thermodynamic Feasibility:** Reactions must balance stoichiometrically and obey thermodynamic state functions ($\Delta H^\circ$, $\Delta G^\circ$, $E^\circ$). Claims of spontaneous endothermic reactions or perpetual energy loops will be rejected.
-3. **Metric Normalization:** When reporting electrocatalytic or photocatalytic benchmarks, you must decouple Faradaic efficiency from single-pass conversion and energy efficiency.
+This repository bridges chemical engineering, reaction kinetics, and software engineering. Because data from this platform feeds directly into peer-reviewed scientific publications, **we enforce strict standards of evidence, thermodynamic consistency, data provenance, and software quality**.
 
 ---
 
-## 3. Contribution Pathways
+## Code of Conduct
 
-### 3.1 Submitting New Literature Benchmarks
-If you wish to add a landmark primary research paper published between 2020 and 2025:
+All contributors and maintainers are expected to adhere to the [Code of Conduct](CODE_OF_CONDUCT.md). We are committed to providing a welcoming, harassment-free environment for everyone.
+
+---
+
+## Non-Negotiable Contribution Rules
+
+Before submitting any proposed modification, ensure your contribution satisfies these four requirements:
+
+1. **Strict DOI Traceability:** No performance metric (conversion, Faradaic efficiency, selectivity, overpotential, current density) may enter datasets without an active, verified Digital Object Identifier (DOI) resolving to a peer-reviewed journal or recognized standard body.
+2. **Thermodynamic Feasibility:** Reactions must balance stoichiometrically for mass and charge and obey thermodynamic state functions ($\Delta H^\circ$, $\Delta G^\circ$, $E^\circ$). Claims of spontaneous endothermic reactions or perpetual energy loops will be rejected immediately.
+3. **Metric Normalization:** When reporting electrocatalytic or photocatalytic benchmarks, you must decouple Faradaic efficiency from single-pass conversion, carbonate crossover, and overall cell energy efficiency.
+4. **RFC 4180 CSV Compliance:** All dataset edits must conform strictly to RFC 4180 rules (exact column counts per row, minimal quoting, UTF-8 encoding).
+
+---
+
+## Contribution Pathways
+
+### Submitting New Literature Benchmarks
+If you wish to add a landmark primary research paper published between 2020 and 2026:
 1. Ensure the paper reports primary experimental or high-level DFT data (not second-hand review summaries).
-2. Edit `scripts/build_literature_matrix.py`.
-3. Add a new row adhering to the 32-column schema in `MASTER_LITERATURE_MATRIX.csv`.
-4. Run `python3 scripts/build_literature_matrix.py` to regenerate the dataset.
-5. In your Pull Request description, provide a PDF snippet or link to the specific page/figure where the metrics are reported.
+2. Edit [`scripts/build_literature_matrix.py`](scripts/build_literature_matrix.py) to append a new record matching the 32-column schema.
+3. Run `python3 scripts/build_literature_matrix.py` to regenerate [`research/literature/MASTER_LITERATURE_MATRIX.csv`](research/literature/MASTER_LITERATURE_MATRIX.csv).
+4. In your Pull Request description, provide a page/figure reference from the primary paper where the values are documented.
 
-### 3.2 Adding or Correcting Chemical Reactions
+### Adding or Correcting Chemical Reactions
 If you identify a missing reaction pathway or an error in thermodynamic parameters:
-1. Verify the standard enthalpy ($\Delta H_{298\text{ K}}^\circ$) and Gibbs free energy ($\Delta G_{298\text{ K}}^\circ$) against NIST Chemistry WebBook or authoritative thermodynamic tables.
-2. Edit `scripts/build_reaction_database.py`.
-3. Run `python3 scripts/build_reaction_database.py`.
+1. Verify the standard enthalpy ($\Delta H_{298\text{ K}}^\circ$) and Gibbs free energy ($\Delta G_{298\text{ K}}^\circ$) against the NIST Chemistry WebBook.
+2. Edit [`scripts/build_reaction_database.py`](scripts/build_reaction_database.py) to update or append the reaction definition.
+3. Run `python3 scripts/build_reaction_database.py` to regenerate the database.
+4. Run `pytest tests/test_reactions.py` to verify thermodynamic consistency.
 
-### 3.3 Correcting Documentation or Typos
-Direct improvements to markdown dossiers (`research/pathways/*.md`, `research/lca_tea/*.md`, `docs/*.md`) or documentation files are welcome.
+### Improving Documentation & Dossiers
+Direct improvements to pathway reports ([`research/pathways/*.md`](research/pathways/)), LCA/TEA assumptions ([`research/lca_tea/*.md`](research/lca_tea/)), or root documentation are welcome. Please ensure all Markdown follows GitHub Flavored Markdown (GFM) standards and maintains a clean heading hierarchy.
 
 ---
 
-## 4. Development & Pull Request Workflow
+## Local Development Workflow
 
-### 4.1 Fork and Branch Setup
+### Environment Setup
 ```bash
 # Clone your fork
 git clone https://github.com/<your-username>/IP-.git
 cd IP-
 
-# Create a dedicated feature branch
-git checkout -b feature/add-tandem-dmc-benchmark
+# Set up an isolated virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install development dependencies
+pip install -r requirements-dev.txt
 ```
 
-### 4.2 Making Changes & Regenerating Artifacts
-Always edit the python generator scripts in `scripts/` rather than manually editing the generated CSV files. Run the appropriate script to update the target datasets:
+### Running Build Scripts
+Execute build operations using the provided [`Makefile`](Makefile):
 
 ```bash
-python3 scripts/build_literature_matrix.py
-python3 scripts/build_reaction_database.py
+# Rebuild all datasets and dossiers deterministically
+make build
+
+# Run the automated test suite
+make test
+
+# Run code style formatting and linting
+make lint
+
+# Run static type checking
+make typecheck
 ```
 
-### 4.3 Automated Pre-PR Linting Checks
-Execute the automated validation checks before committing:
+### Automated Testing & Linting
+Before opening a Pull Request, verify that all automated checks pass locally:
 
 ```bash
-# Check CSV validity
-python3 -c "
-import csv, glob
-for path in glob.glob('research/**/*.csv', recursive=True):
-    with open(path, 'r', encoding='utf-8') as f:
-        reader = list(csv.reader(f))
-        print(f'[OK] {path}: {len(reader)} rows')
-"
+# Verify CSV schema integrity
+pytest tests/test_csv_integrity.py
+
+# Verify reaction thermodynamics
+pytest tests/test_reactions.py
+
+# Run ruff linter
+ruff check .
 ```
 
-### 4.4 Commit Message Conventions
-We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+---
+
+## Git Commit & Pull Request Standards
+
+### Conventional Commits
+We adhere to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification:
 - `feat:` Introduces a new dataset column, script feature, or pathway dossier.
 - `fix:` Corrects a chemical formula, thermodynamic value, or citation typo.
 - `docs:` Updates documentation, readmes, or publication plans.
-- `chore:` Maintenance of `.gitignore`, licenses, or script formatting.
+- `test:` Adds or updates automated tests.
+- `refactor:` Code refactoring without behavioral changes.
+- `chore:` Maintenance of configuration, dependencies, or licenses.
 
 Example:
 ```bash
 git commit -m "fix(chemistry): correct stoichiometric water coefficient in formic acid eCO2R"
 ```
 
+### Pull Request Checklist
+When submitting a Pull Request, confirm that:
+- [ ] Changes were made to generator scripts in `scripts/`, and all artifacts were regenerated (`make build`).
+- [ ] All automated tests pass (`make test`).
+- [ ] Code conforms to style guidelines (`make lint`).
+- [ ] New literature citations include verified DOIs.
+- [ ] PR title follows Conventional Commits format.
+
 ---
 
-## 5. Review & Acceptance Process
+## Peer Review & Acceptance Process
 
-1. **Automated Validation:** The maintainers run the data consistency suite on incoming PRs.
-2. **Scientific Peer Review:** Every PR is reviewed by at least one researcher at IIIT-Delhi for chemical accuracy and citation authenticity.
-3. **Merge & Attribution:** Once approved, your changes will be merged into `main`, and your name will be acknowledged in the repository and subsequent journal publications.
+1. **Automated CI Checks:** Every incoming PR triggers GitHub Actions to run the full test suite across Python 3.11, 3.12, 3.13, and 3.14.
+2. **Scientific Review:** At least one research team member from IIIT-Delhi reviews the PR for chemical validity, mass/charge balance, and citation fidelity.
+3. **Merge & Attribution:** Once approved, your PR will be merged into `main`, and your contribution will be acknowledged in release notes and subsequent journal manuscripts.

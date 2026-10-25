@@ -1,11 +1,26 @@
-import os
+"""LCA and TEA Scenario Generator for CCU Evidence Engine.
+
+Generates Life-Cycle Assessment boundaries, Techno-Economic reviews, and
+the multi-scenario sensitivity comparison matrix in research/lca_tea/.
+"""
+
+from __future__ import annotations
+
+import argparse
 import csv
+from pathlib import Path
+from typing import Sequence
 
-os.makedirs('research/lca_tea', exist_ok=True)
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_OUTPUT_DIR = REPO_ROOT / 'research' / 'lca_tea'
 
-# 1. LCA_REVIEW.md
-with open('research/lca_tea/LCA_REVIEW.md', 'w', encoding='utf-8') as f:
-    f.write(r'''# Life-Cycle Assessment (LCA) Review: System Boundaries, Energy Penalties, and Net Avoided Emissions
+
+def build_lca_tea(output_dir: Path | str = DEFAULT_OUTPUT_DIR) -> None:
+    """Generate LCA review, TEA review, and scenario comparison CSV."""
+    out_dir = Path(output_dir).resolve()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    with open(out_dir / 'LCA_REVIEW.md', 'w', encoding='utf-8') as f:
+        f.write(r'''# Life-Cycle Assessment (LCA) Review: System Boundaries, Energy Penalties, and Net Avoided Emissions
 
 **Document:** `research/lca_tea/LCA_REVIEW.md`  
 **Execution Date:** October 2026  
@@ -80,8 +95,8 @@ As established by Sternberg & Bardow (*Nature Climate Change* 2021), CCU chemica
 ''')
 
 # 2. TEA_REVIEW.md
-with open('research/lca_tea/TEA_REVIEW.md', 'w', encoding='utf-8') as f:
-    f.write(r'''# Techno-Economic Analysis (TEA) Review: CAPEX, OPEX, and Levelized Cost of Products (LCOP)
+    with open(out_dir / 'TEA_REVIEW.md', 'w', encoding='utf-8') as f:
+        f.write(r'''# Techno-Economic Analysis (TEA) Review: CAPEX, OPEX, and Levelized Cost of Products (LCOP)
 
 **Document:** `research/lca_tea/TEA_REVIEW.md`  
 **Execution Date:** October 2026  
@@ -133,86 +148,107 @@ $$\text{LCOP} = \frac{\sum_{t=0}^N \frac{\text{CAPEX}_t + \text{OPEX}_t + \text{
 ''')
 
 # 3. SCENARIO_COMPARISON.csv
-csv_headers = [
+    csv_headers = [
     'Pathway_ID', 'Pathway_Name', 'Target_Product', 'Functional_Unit',
     'Fossil_Baseline_Emissions_kgCO2e', 'CCU_GreyH2_Grid_Emissions_kgCO2e',
     'CCU_GreenH2_Renewable_Emissions_kgCO2e', 'Net_Avoided_Emissions_Best_Case_kgCO2e',
     'Electricity_Demand_kWh_per_FU', 'H2_Demand_kg_per_FU', 'Carbon_Retention_Duration',
     'Fossil_Baseline_Cost_USD_per_FU', 'CCU_Current_Cost_USD_per_FU', 'CCU_Projected_2030_Cost_USD_per_FU',
     'Current_TRL', 'Commercial_Deployment_Status'
-]
-
-csv_rows = [
-    [
-        'PATH-01', 'Thermocatalytic Hydrogenation', 'Methanol', '1 kg Methanol',
-        '0.80', '2.75', '-1.35', '2.15', '10.50', '0.190', '< 6 months (Fuel)',
-        '0.40', '0.70', '0.42', '8-9', 'Commercial facilities operating (CRI Iceland, Shunli China)'
-    ],
-    [
-        'PATH-02', 'Solid-Electrolyte Reduction', 'Formic Acid (Pure)', '1 kg Formic Acid',
-        '1.20', '3.10', '-0.65', '1.85', '4.20', '0.000', '1-5 years (Chemical/LOHC)',
-        '0.80', '0.68', '0.48', '6-7', 'Pilot / multi-kW demonstration units'
-    ],
-    [
-        'PATH-03', 'Zero-Gap MEA Electrosynthesis', 'Carbon Monoxide', '1 kg CO',
-        '0.95', '2.40', '-1.10', '2.05', '6.50', '0.000', '< 6 months (Syngas)',
-        '0.85', '0.75', '0.50', '7-8', 'Commercial demonstrations (Twelve / Siemens Energy)'
-    ],
-    [
-        'PATH-04', 'Pure-Water MEA Electrosynthesis', 'Ethylene', '1 kg Ethylene',
-        '1.70', '11.80', '-1.40', '3.10', '33.50', '0.000', '1-20 years (Polyethylene)',
-        '1.10', '2.15', '1.30', '5-6', '100 cm² MEA pilot operating >1,000 h'
-    ],
-    [
-        'PATH-05', 'Zero-Gap AEM Electrosynthesis', 'Ethanol', '1 kg Ethanol',
-        '1.40', '14.20', '-0.85', '2.25', '42.00', '0.000', '< 6 months (Fuel/Sanitizer)',
-        '0.65', '1.85', '1.10', '4-5', 'Benchtop flow-cell validation'
-    ],
-    [
-        'PATH-06', 'Direct Synthesis with Dehydration', 'Dimethyl Carbonate', '1 kg DMC',
-        '1.65', '3.20', '-0.85', '2.50', '2.80', '0.000', '1-10 years (Electrolyte)',
-        '1.20', '1.45', '1.05', '5-6', 'Pilot batch reactors (CeO2 nanorods)'
-    ],
-    [
-        'PATH-07', 'Ring-Opening Copolymerization', 'Polycarbonate Polyols', '1 kg Polyol',
-        '2.20', '2.50', '1.92', '0.28', '0.60', '0.000', '10-50 years (Polyurethanes)',
-        '2.25', '2.10', '1.85', '8-9', 'Fully commercial (Covestro cardyon®, Econic)'
-    ],
-    [
-        'PATH-08', 'Molten Carbonate Electrosynthesis', 'Carbon Nanotubes', '1 kg CNT',
-        '15.50', '22.00', '-3.67', '19.17', '18.00', '0.000', '> 10,000 years (Permanent)',
-        '50.00', '2.00', '1.20', '6-7', 'Industrial pilot deployment (C2CNT XPRIZE winner)'
-    ],
-    [
-        'PATH-09', 'Magnesiothermic Combustion', 'Carbon / MgO Composite', '1 kg Carbon',
-        '15.50', '45.00', '35.00', '-19.50', '75.00', '0.000', '> 10,000 years (Permanent)',
-        '50.00', '18.00', '15.00', '3-4', 'Laboratory scale (Debunked: net positive emissions)'
-    ],
-    [
-        'PATH-10', 'Industrial Slag Carbonation Curing', 'Carbonated Concrete Slag', '1 tonne Slag Block',
-        '120.00', '35.00', '-180.00', '300.00', '15.00', '0.000', '> 1,000 years (Permanent)',
-        '30.00', '20.00', '16.00', '8-9', 'Commercial precast concrete plants (CarbonCure, Solidia)'
-    ],
-    [
-        'PATH-11', 'In-Situ Basalt Mineralization', 'Mineralized Calcite', '1 tonne CO2 stored',
-        '0.00', '45.00', '-920.00', '920.00', '150.00', '0.000', '> 10,000 years (Permanent CDR)',
-        '0.00', '30.00', '22.00', '8-9', 'Fully operational commercial DAC+storage (Mammoth/Carbfix)'
-    ],
-    [
-        'PATH-12', 'Microbial Electrosynthesis', 'Acetate', '1 kg Acetate',
-        '1.10', '4.50', '-1.10', '2.20', '12.00', '0.000', '< 6 months (Biochemical)',
-        '0.75', '1.15', '0.80', '5-6', 'Pilot bioreactors (1.4 g/L/d demonstrated)'
-    ],
-    [
-        'PATH-13', 'Bi-Reforming of Methane', 'Tailored Syngas (H2/CO=2)', '1 Nm³ Syngas',
-        '0.45', '0.65', '0.35', '0.10', '0.30', '0.000', '< 6 months (Chemical feed)',
-        '0.18', '0.20', '0.16', '6-7', 'Pilot demonstration (Ni/CaO catalysts)'
     ]
-]
 
-with open('research/lca_tea/SCENARIO_COMPARISON.csv', 'w', newline='', encoding='utf-8') as f:
-    writer = csv.writer(f)
-    writer.writerow(csv_headers)
-    writer.writerows(csv_rows)
+    csv_rows = [
+        [
+            'PATH-01', 'Thermocatalytic Hydrogenation', 'Methanol', '1 kg Methanol',
+            '0.80', '2.75', '-1.35', '2.15', '10.50', '0.190', '< 6 months (Fuel)',
+            '0.40', '0.70', '0.42', '8-9', 'Commercial facilities operating (CRI Iceland, Shunli China)'
+    ],
+        [
+            'PATH-02', 'Solid-Electrolyte Reduction', 'Formic Acid (Pure)', '1 kg Formic Acid',
+            '1.20', '3.10', '-0.65', '1.85', '4.20', '0.000', '1-5 years (Chemical/LOHC)',
+            '0.80', '0.68', '0.48', '6-7', 'Pilot / multi-kW demonstration units'
+    ],
+        [
+            'PATH-03', 'Zero-Gap MEA Electrosynthesis', 'Carbon Monoxide', '1 kg CO',
+            '0.95', '2.40', '-1.10', '2.05', '6.50', '0.000', '< 6 months (Syngas)',
+            '0.85', '0.75', '0.50', '7-8', 'Commercial demonstrations (Twelve / Siemens Energy)'
+    ],
+        [
+            'PATH-04', 'Pure-Water MEA Electrosynthesis', 'Ethylene', '1 kg Ethylene',
+            '1.70', '11.80', '-1.40', '3.10', '33.50', '0.000', '1-20 years (Polyethylene)',
+            '1.10', '2.15', '1.30', '5-6', '100 cm² MEA pilot operating >1,000 h'
+    ],
+        [
+            'PATH-05', 'Zero-Gap AEM Electrosynthesis', 'Ethanol', '1 kg Ethanol',
+            '1.40', '14.20', '-0.85', '2.25', '42.00', '0.000', '< 6 months (Fuel/Sanitizer)',
+            '0.65', '1.85', '1.10', '4-5', 'Benchtop flow-cell validation'
+    ],
+        [
+            'PATH-06', 'Direct Synthesis with Dehydration', 'Dimethyl Carbonate', '1 kg DMC',
+            '1.65', '3.20', '-0.85', '2.50', '2.80', '0.000', '1-10 years (Electrolyte)',
+            '1.20', '1.45', '1.05', '5-6', 'Pilot batch reactors (CeO2 nanorods)'
+    ],
+        [
+            'PATH-07', 'Ring-Opening Copolymerization', 'Polycarbonate Polyols', '1 kg Polyol',
+            '2.20', '2.50', '1.92', '0.28', '0.60', '0.000', '10-50 years (Polyurethanes)',
+            '2.25', '2.10', '1.85', '8-9', 'Fully commercial (Covestro cardyon®, Econic)'
+    ],
+        [
+            'PATH-08', 'Molten Carbonate Electrosynthesis', 'Carbon Nanotubes', '1 kg CNT',
+            '15.50', '22.00', '-3.67', '19.17', '18.00', '0.000', '> 10,000 years (Permanent)',
+            '50.00', '2.00', '1.20', '6-7', 'Industrial pilot deployment (C2CNT XPRIZE winner)'
+    ],
+        [
+            'PATH-09', 'Magnesiothermic Combustion', 'Carbon / MgO Composite', '1 kg Carbon',
+            '15.50', '45.00', '35.00', '-19.50', '75.00', '0.000', '> 10,000 years (Permanent)',
+            '50.00', '18.00', '15.00', '3-4', 'Laboratory scale (Debunked: net positive emissions)'
+    ],
+        [
+            'PATH-10', 'Industrial Slag Carbonation Curing', 'Carbonated Concrete Slag', '1 tonne Slag Block',
+            '120.00', '35.00', '-180.00', '300.00', '15.00', '0.000', '> 1,000 years (Permanent)',
+            '30.00', '20.00', '16.00', '8-9', 'Commercial precast concrete plants (CarbonCure, Solidia)'
+    ],
+        [
+            'PATH-11', 'In-Situ Basalt Mineralization', 'Mineralized Calcite', '1 tonne CO2 stored',
+            '0.00', '45.00', '-920.00', '920.00', '150.00', '0.000', '> 10,000 years (Permanent CDR)',
+            '0.00', '30.00', '22.00', '8-9', 'Fully operational commercial DAC+storage (Mammoth/Carbfix)'
+    ],
+        [
+            'PATH-12', 'Microbial Electrosynthesis', 'Acetate', '1 kg Acetate',
+            '1.10', '4.50', '-1.10', '2.20', '12.00', '0.000', '< 6 months (Biochemical)',
+            '0.75', '1.15', '0.80', '5-6', 'Pilot bioreactors (1.4 g/L/d demonstrated)'
+    ],
+        [
+            'PATH-13', 'Bi-Reforming of Methane', 'Tailored Syngas (H2/CO=2)', '1 Nm³ Syngas',
+            '0.45', '0.65', '0.35', '0.10', '0.30', '0.000', '< 6 months (Chemical feed)',
+            '0.18', '0.20', '0.16', '6-7', 'Pilot demonstration (Ni/CaO catalysts)'
+    ]
+    ]
 
-print('Successfully generated LCA_REVIEW.md, TEA_REVIEW.md, and SCENARIO_COMPARISON.csv.')
+    with open(out_dir / 'SCENARIO_COMPARISON.csv', 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(csv_headers)
+        writer.writerows(csv_rows)
+
+    print(f'Successfully generated LCA_REVIEW.md, TEA_REVIEW.md, and SCENARIO_COMPARISON.csv in {out_dir}.')
+
+
+def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description='Generate CCU LCA/TEA Models.')
+    parser.add_argument(
+        '--output-dir',
+        '-o',
+        type=Path,
+        default=DEFAULT_OUTPUT_DIR,
+        help='Target output directory for LCA/TEA models.'
+    )
+    return parser.parse_args(args)
+
+
+def main() -> None:
+    args = parse_args()
+    build_lca_tea(output_dir=args.output_dir)
+
+
+if __name__ == '__main__':
+    main()

@@ -1,7 +1,20 @@
-import csv
-import os
+"""Master Literature Matrix Generator for CCU Evidence Engine.
 
-headers = [
+Compiles, verifies, and outputs the 32-column Master Literature Matrix
+evaluating 22 primary 2020-2026 benchmark studies against RFC 4180 standards.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+from pathlib import Path
+from typing import Sequence
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_OUTPUT = REPO_ROOT / "research" / "literature" / "MASTER_LITERATURE_MATRIX.csv"
+
+HEADERS: list[str] = [
     'Paper_ID', 'Year', 'Full_Title', 'Authors', 'Journal', 'DOI', 'Publisher_URL',
     'Publication_Type', 'Research_Classification', 'CO2_Utilisation_Pathway', 'Target_Product',
     'Chemical_Reaction', 'Catalyst_or_Biological_System', 'Reaction_Mechanism',
@@ -12,7 +25,7 @@ headers = [
     'Proposed_Manuscript_Section', 'Full_Text_Availability', 'Verification_Status', 'Extraction_Notes'
 ]
 
-rows = [
+ROWS: list[list[str]] = [
     # 1. Methanol Synthesis
     [
         'METH-2020-TSOU', '2020',
@@ -442,10 +455,66 @@ rows = [
     ]
 ]
 
-os.makedirs('research/literature', exist_ok=True)
-with open('research/literature/MASTER_LITERATURE_MATRIX.csv', 'w', newline='', encoding='utf-8') as f:
-    writer = csv.writer(f)
-    writer.writerow(headers)
-    writer.writerows(rows)
 
-print(f'Successfully wrote {len(rows)} verified benchmark papers to research/literature/MASTER_LITERATURE_MATRIX.csv with {len(headers)} columns.')
+def build_literature_matrix(
+    output_path: Path | str = DEFAULT_OUTPUT,
+    verify_only: bool = False,
+) -> Path:
+    """Build and write the 32-column master literature matrix.
+
+    Args:
+        output_path: Target path for the generated CSV file.
+        verify_only: If True, validate data rows without writing to disk.
+
+    Returns:
+        Path to the target CSV file.
+    """
+    path = Path(output_path).resolve()
+
+    # Integrity verification
+    for idx, r in enumerate(ROWS, start=1):
+        if len(r) != len(HEADERS):
+            raise ValueError(
+                f"Row {idx} ({r[0]}) length mismatch: expected {len(HEADERS)}, got {len(r)}"
+            )
+
+    if verify_only:
+        print(f"Verified {len(ROWS)} literature records against {len(HEADERS)} schema columns.")
+        return path
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(HEADERS)
+        writer.writerows(ROWS)
+
+    print(f"Successfully wrote {len(ROWS)} verified benchmark papers to {path} with {len(HEADERS)} columns.")
+    return path
+
+
+def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
+    """Parse CLI arguments."""
+    parser = argparse.ArgumentParser(description="Generate CCU Master Literature Matrix.")
+    parser.add_argument(
+        "--output",
+        "-o",
+        type=Path,
+        default=DEFAULT_OUTPUT,
+        help=f"Target output CSV path (default: {DEFAULT_OUTPUT})",
+    )
+    parser.add_argument(
+        "--verify",
+        action="store_true",
+        help="Validate rows without writing to disk.",
+    )
+    return parser.parse_args(args)
+
+
+def main() -> None:
+    """CLI Entry Point."""
+    args = parse_args()
+    build_literature_matrix(output_path=args.output, verify_only=args.verify)
+
+
+if __name__ == "__main__":
+    main()

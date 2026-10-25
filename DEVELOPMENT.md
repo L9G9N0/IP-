@@ -7,39 +7,50 @@
 
 ---
 
-## 1. Prerequisites & System Requirements
+## Table of Contents
 
-The platform is designed to be completely portable, lightweight, and executable with zero external third-party Python package installations.
+- [Prerequisites & System Requirements](#prerequisites--system-requirements)
+- [Local Setup & Repository Initialization](#local-setup--repository-initialization)
+- [Makefile Automation & Standard Commands](#makefile-automation--standard-commands)
+- [Build Script Execution & Pipeline Commands](#build-script-execution--pipeline-commands)
+- [Coding Standards & Python 3.14 Considerations](#coding-standards--python-314-considerations)
+  - [Raw String Literals for Multiline Strings with LaTeX](#raw-string-literals-for-multiline-strings-with-latex)
+  - [RFC 4180 CSV Conformance](#rfc-4180-csv-conformance)
+  - [Root-Relative Path Resolution](#root-relative-path-resolution)
+- [Automated Data Quality & Integrity Auditing](#automated-data-quality--integrity-auditing)
+- [How to Add New Literature & Reactions](#how-to-add-new-literature--reactions)
+  - [Adding a New Benchmark Paper](#adding-a-new-benchmark-paper)
+  - [Adding a New Chemical Reaction](#adding-a-new-chemical-reaction)
+- [Git Workflow & Commit Hygiene](#git-workflow--commit-hygiene)
+
+---
+
+## Prerequisites & System Requirements
+
+The platform is designed to be completely portable, lightweight, and executable with zero external third-party Python runtime installations.
 
 ### Supported Operating Systems
 - **macOS:** Ventura (13.x), Sonoma (14.x), Sequoia (15.x)
 - **Linux:** Ubuntu 22.04/24.04 LTS, Debian 12, RHEL 9, Arch Linux
-- **Windows:** Windows 10/11 via Windows Subsystem for Linux (WSL2 recommended) or native PowerShell
+- **Windows:** Windows 10/11 via WSL2 (recommended) or native PowerShell
 
 ### Toolchain Dependencies
-- **Python:** 3.11, 3.12, 3.13, or 3.14 (Tested on Python 3.14.0)
+- **Python:** 3.11, 3.12, 3.13, or 3.14
 - **Git:** Version 2.40 or newer
-- **Text Editor:** VS Code, Cursor, Vim, or Emacs with Markdown and CSV extensions
+- **Make:** GNU Make (optional, but recommended for single-command automation)
 
 ---
 
-## 2. Local Setup & Repository Initialization
+## Local Setup & Repository Initialization
 
-Clone the official GitHub repository and navigate to the project directory:
+Clone the official GitHub repository and navigate into the project root:
 
 ```bash
 # Clone the repository
 git clone https://github.com/L9G9N0/IP-.git
-
-# Navigate into the project root
 cd IP-
-```
 
-### Python Virtual Environment (Optional)
-Because all generation scripts exclusively use the Python Standard Library (`os`, `csv`, `sys`, `re`, `glob`), a virtual environment is optional. However, if you plan to run exploratory Jupyter notebooks or Pandas analytics, create an isolated virtual environment:
-
-```bash
-# Create a virtual environment
+# Set up an isolated Python virtual environment (recommended for development)
 python3 -m venv .venv
 
 # Activate the virtual environment
@@ -48,20 +59,33 @@ source .venv/bin/activate
 # On Windows (PowerShell):
 # .venv\Scripts\Activate.ps1
 
-# Optional analytical dependencies
-pip install --upgrade pip
-pip install pandas matplotlib seaborn
+# Install development, testing, and linting tools
+pip install -r requirements-dev.txt
 ```
 
 ---
 
-## 3. Build Script Execution & Pipeline Commands
+## Makefile Automation & Standard Commands
 
-All data generation scripts reside in `scripts/`. You can execute individual scripts to regenerate specific files, or run the entire pipeline via a single command:
+The repository provides a standard [`Makefile`](Makefile) for standardizing daily developer workflows:
+
+| Target | Description |
+|---|---|
+| `make build` | Deterministically executes the full data generation and synthesis pipeline |
+| `make test` | Executes the complete `pytest` test suite with duration profiling |
+| `make lint` | Runs `ruff` static code analysis and checks formatting |
+| `make typecheck` | Runs `mypy` strict static type analysis on all scripts |
+| `make format` | Automatically formats code using `ruff` |
+| `make clean` | Removes Python caches (`__pycache__`), `.pytest_cache`, and OS artifacts |
+| `make verify-csv` | Validates RFC 4180 column count integrity across all CSV databases |
+
+---
+
+## Build Script Execution & Pipeline Commands
+
+All data generation scripts reside in `scripts/`. Scripts can be executed individually with standard CLI flags or executed in sequence:
 
 ```bash
-# --- INDIVIDUAL SCRIPT EXECUTIONS ---
-
 # 1. Regenerate Master Literature Matrix (research/literature/MASTER_LITERATURE_MATRIX.csv)
 python3 scripts/build_literature_matrix.py
 
@@ -83,88 +107,80 @@ python3 scripts/build_research_gaps.py
 # 7. Regenerate Claim Register (research/evidence/CLAIM_REGISTER.csv)
 python3 scripts/build_claim_register.py
 
-# 8. Regenerate Risk Registers, Quality Control Audits & Revision Plan
+# 8. Regenerate Risk Registers & Consistency Audits
 python3 scripts/build_docs_and_qc.py
+
+# 9. Recompile Full Revised Manuscript Draft
+python3 scripts/build_final_manuscript.py
 ```
 
-### Complete One-Liner Pipeline Execution
+### Single Command Full Rebuild
 ```bash
-python3 -c "
-import subprocess, sys
-scripts = [
-    'scripts/build_literature_matrix.py',
-    'scripts/build_reaction_database.py',
-    'scripts/build_pathway_reports.py',
-    'scripts/build_lca_tea.py',
-    'scripts/build_tables_and_figures.py',
-    'scripts/build_research_gaps.py',
-    'scripts/build_claim_register.py',
-    'scripts/build_docs_and_qc.py'
-]
-for s in scripts:
-    print(f'==> Executing {s}...')
-    res = subprocess.run([sys.executable, s])
-    if res.returncode != 0:
-        sys.exit(f'Error running {s}')
-print('==> Pipeline successfully regenerated!')
-"
+make build
 ```
 
 ---
 
-## 4. Coding Standards & Python 3.14 Considerations
+## Coding Standards & Python 3.14 Considerations
 
-When modifying scripts or contributing new data generators, observe the following rules:
+When contributing new build modules or modifying existing generators, follow these rules:
 
-### 4.1 Raw String Literals for Multiline Strings with LaTeX
-Python 3.12+ and Python 3.14 issue `SyntaxWarning` or `SyntaxError` on unrecognized escape sequences such as `\t`, `\r`, `\D`, `\a` inside standard string literals. Because markdown dossiers frequently contain LaTeX equations (e.g., `\text{CO}_2`, `\Delta H^\circ`, `\rightleftharpoons`), **always use raw string literals (`r'''...'''`)**:
+### Raw String Literals for Multiline Strings with LaTeX
+Python 3.12+ and Python 3.14 issue `SyntaxWarning` on unrecognized escape sequences such as `\t`, `\r`, `\D`, `\a`, `\*` inside standard string literals. Because markdown dossiers frequently contain LaTeX equations (e.g., `\text{CO}_2`, `\Delta H^\circ`, `\rightleftharpoons`), **always use raw string literals (`r'''...'''` or `r"""..."""`)**:
 
 ```python
 # CORRECT: Raw string literal preserves LaTeX backslashes without warnings
-content = r'''
+content = r"""
 $$2\text{CO}_2 + 12\text{H}^+ + 12e^- \rightarrow \text{C}_2\text{H}_4 + 4\text{H}_2\text{O}$$
 \Delta H^\circ = -128.4\text{ kJ/mol}
-'''
+"""
 
 # INCORRECT: Standard string triggers SyntaxWarning in Python 3.14
-content = '''
+content = """
 $$2\text{CO}_2 + 12\text{H}^+ + 12e^- \rightarrow \text{C}_2\text{H}_4 + 4\text{H}_2\text{O}$$
-'''
+"""
 ```
 
-### 4.2 RFC 4180 CSV Conformance
-All CSV generation must use Python's built-in `csv.writer` module with standard quoting rules (`csv.QUOTE_MINIMAL` or `csv.QUOTE_ALL`) and UTF-8 encoding:
+### RFC 4180 CSV Conformance
+All CSV generation must use Python's built-in `csv.writer` module with standard quoting rules and UTF-8 encoding:
 
 ```python
 import csv
+from pathlib import Path
 
-with open('output.csv', 'w', newline='', encoding='utf-8') as f:
-    writer = csv.writer(f)
-    writer.writerow(headers)
-    writer.writerows(rows)
+def write_csv(filepath: Path, headers: list[str], rows: list[list[str]]) -> None:
+    filepath.parent.mkdir(parents=True, exist_ok=True)
+    with open(filepath, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(headers)
+        writer.writerows(rows)
+```
+
+### Root-Relative Path Resolution
+Never use raw relative paths like `open('research/data.csv')`. Always resolve paths relative to the repository root:
+
+```python
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+OUTPUT_FILE = REPO_ROOT / "research" / "literature" / "MASTER_LITERATURE_MATRIX.csv"
 ```
 
 ---
 
-## 5. Automated Data Quality & Integrity Auditing
+## Automated Data Quality & Integrity Auditing
 
-Before submitting pull requests or making updates, run the automated linting checks:
+Before opening pull requests, run the automated quality checks:
 
 ```bash
-# 1. Verify that all CSV files are valid and readable
-python3 -c "
-import csv, glob
-for path in sorted(glob.glob('research/**/*.csv', recursive=True)):
-    with open(path, 'r', encoding='utf-8') as f:
-        reader = list(csv.reader(f))
-        col_count = len(reader[0])
-        for idx, row in enumerate(reader[1:], start=2):
-            assert len(row) == col_count, f'Column mismatch in {path} at line {idx}: expected {col_count}, got {len(row)}'
-        print(f'[PASSED] {path}: {len(reader)-1} rows, {col_count} columns')
-"
+# 1. Run full test suite via pytest
+pytest -v
 
-# 2. Check for unresolved TODO or placeholder tags
-python3 -c "
+# 2. Verify all CSV files match exact column counts
+make verify-csv
+
+# 3. Check for unresolved TODO or placeholder tags
+python -c "
 import glob
 for path in glob.glob('research/**/*.md', recursive=True):
     with open(path, 'r', encoding='utf-8') as f:
@@ -177,30 +193,32 @@ print('[PASSED] Placeholder scan completed.')
 
 ---
 
-## 6. How to Add New Literature & Reactions
+## How to Add New Literature & Reactions
 
 ### Adding a New Benchmark Paper
-1. Open `scripts/build_literature_matrix.py`.
-2. Locate the `rows` array.
+1. Open [`scripts/build_literature_matrix.py`](scripts/build_literature_matrix.py).
+2. Locate the benchmark data array.
 3. Append a new 32-element list adhering strictly to the `headers` schema:
-   - Provide an immutable `Paper_ID` (e.g., `METH-2024-SURNAME`).
+   - Provide an immutable `Paper_ID` (e.g., `METH-2025-SURNAME`).
    - Include an active, verified `DOI`.
    - Ensure all performance numbers (FE, conversion, yield) are verified directly against the published paper's main text or Supplementary Information.
-4. Run `python3 scripts/build_literature_matrix.py`.
+4. Run `python3 scripts/build_literature_matrix.py` to regenerate the database.
+5. Verify integrity with `pytest tests/test_csv_integrity.py`.
 
 ### Adding a New Chemical Reaction
-1. Open `scripts/build_reaction_database.py`.
-2. Locate the `reactions` array.
-3. Append a new 25-element list with stoichiometric balance and calculated $\Delta H^\circ$, $\Delta G^\circ$, and $E^\circ$ from NIST or primary literature.
+1. Open [`scripts/build_reaction_database.py`](scripts/build_reaction_database.py).
+2. Locate the reactions array.
+3. Append a new reaction record with stoichiometric balance and calculated $\Delta H^\circ$, $\Delta G^\circ$, and $E^\circ$ from NIST or primary literature.
 4. Run `python3 scripts/build_reaction_database.py`.
+5. Verify with `pytest tests/test_reactions.py`.
 
 ---
 
-## 7. Git Workflow & Commit Hygiene
+## Git Workflow & Commit Hygiene
 
 - **Branching:** Work on dedicated feature branches (e.g., `feature/add-formic-benchmarks`).
 - **Commit Messages:** Follow Conventional Commits:
-  - `feat: add 2024 solid-electrolyte benchmark to literature matrix`
+  - `feat: add 2025 solid-electrolyte benchmark to literature matrix`
   - `docs: update LCA grid threshold calculations in LCA_REVIEW.md`
   - `fix: correct typo in ammonium carbamate stoichiometric coefficients`
-- **Clean Working Tree:** Never commit `.DS_Store`, OS cache files, or Python `__pycache__` directories.
+- **Clean Working Tree:** Never commit `.DS_Store`, OS cache files, or Python `__pycache__` directories. Run `make clean` before committing.

@@ -1,0 +1,7 @@
+# Production Dependencies for CCU Evidence Engine
+# -------------------------------------------------------------
+# The core scientific data engine is designed with ZERO third-party runtime dependencies.
+# All extraction, reaction balancing, metric normalization, and manuscript compilation
+# operate strictly on the Python Standard Library (os, sys, pathlib, csv, re, argparse).
+# 
+# Python >= 3.11 is required.

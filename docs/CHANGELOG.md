@@ -1,37 +1,64 @@
-# Changelog: Record of Changes and File Generation
+# Changelog
 
-**Document:** `docs/CHANGELOG.md`  
-**Date:** October 2026
+All notable changes to the Carbon Dioxide Utilisation (CCU) Evidence Engine & Research Platform will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+Refer to the canonical root [CHANGELOG.md](../CHANGELOG.md) for full version history.
 
 ---
 
-## [Phase 0] Original Manuscript Audit
-- Created `research/audit/ORIGINAL_MANUSCRIPT_ANALYSIS.md`: Comprehensive 21-section analysis of original paper (Pages 1–26).
-- Created `research/audit/SECTION_BY_SECTION_AUDIT.csv`: Structured audit matrix across all 21 sections with priority rankings.
-- Created `research/audit/INITIAL_RESEARCH_PROBLEMS.md`: Foundational critique of thermodynamic errors, KS-21 misattribution, carbamate formula typos, and self-citation bias.
+## [Unreleased]
 
-## [Phase 1 & 2] Reproducible Literature Search & Master Matrix
-- Created `research/methodology/LITERATURE_REVIEW_PROTOCOL.md`: PRISMA-compliant literature review protocol detailing search queries across OpenAlex, Crossref, and PubMed.
-- Created `research/literature/MASTER_LITERATURE_MATRIX.csv`: 32-column verified database containing 22 high-impact benchmark papers (2020–2025).
-- Created `research/references/REFERENCE_VERIFICATION.csv`: Complete audit of all 48 citations from the original manuscript.
+### Added
+- Enterprise GitHub configuration: issue templates, pull request template, CODEOWNERS, and CI/CD workflows.
+- Root configuration and packaging files: `pyproject.toml`, `requirements.txt`, `requirements-dev.txt`, `Makefile`, `.editorconfig`.
+- Automated test suite in `tests/` covering CSV RFC 4180 integrity, thermodynamic state functions, script idempotency, and markdown structure.
+- Modular CLI arguments (`argparse`), type annotations, and `if __name__ == '__main__':` entry points across all 9 data generation scripts.
 
-## [Phase 3] Chemical Reaction Database & Mechanistic Analysis
-- Created `research/chemistry/REACTION_DATABASE.csv`: 22 balanced candidate reactions with thermodynamic parameters ($\Delta H^\circ, \Delta G^\circ, E^\circ$).
-- Created `research/chemistry/REACTION_MECHANISM_ANALYSIS.md`: In-depth mechanistic evaluation of In₂O₃ vacancy dynamics, Cu facet bifurcation, and DFM reactive capture.
-- Created `research/chemistry/NEW_REACTION_CANDIDATES.md`: Structured candidate reaction profiles with strict scientific maturity classifications.
+### Fixed
+- Fixed column count mismatch in `research/audit/FINAL_CLAIM_AND_REFERENCE_AUDIT.csv` on row 9 (`CLM-08`).
+- Fixed Python 3.14 invalid escape sequence syntax warning in `scripts/build_final_manuscript.py`.
+- Fixed Mermaid diagram rendering error in `ROADMAP.md` by replacing unsupported `gantt` syntax with standard `flowchart LR`.
+- Removed destructive script overwrite of root `README.md` from `scripts/build_docs_and_qc.py`.
 
-## [Phase 4 & 5] Section Research Reports & Benchmark Paper Analysis
-- Created 13 pathway research reports in `research/pathways/` covering Methanol, eCO₂R, Dry Reforming, Urea, Carbonates, Carbon Nanomaterials, Pharma, Biotech, Mineralisation, Photocatalysis, ICCC, LCA/TEA, and Policy.
-- Created `research/literature/BENCHMARK_PAPER_ANALYSIS.md`: Deep technical analyses of 9 landmark 2020–2025 primary papers.
+---
 
-## [Phase 6, 7, 8] Normalisation, LCA/TEA, Tables & Figures
-- Created `research/evidence/METRIC_NORMALIZATION.md`: Normalization guide separating Faradaic efficiency from chemical yield and conversion.
-- Created `research/lca_tea/LCA_REVIEW.md`, `TEA_REVIEW.md`, and `SCENARIO_COMPARISON.csv`.
-- Created `research/tables/TABLE_AUDIT.md` and `research/tables/CROSS_PATHWAY_TABLE.csv`.
-- Created `research/figures/FIGURE_AUDIT.md` and `research/figures/FIGURE_PLANS.md`.
+## [1.2.0] - 2026-10-19
 
-## [Phase 9, 10, 11, 12] Research Gaps, Traceability, QC & Documentation
-- Created `research/gaps/REVIEW_LANDSCAPE_2020_2025.md`, `RESEARCH_GAPS.md`, and `REVIEW_NOVELTY_ANALYSIS.md`.
-- Created `research/evidence/CLAIM_REGISTER.csv`: Auditing 16 critical claims.
-- Created `research/audit/PUBLICATION_RISK_REGISTER.md`, `EVIDENCE_COVERAGE_REPORT.md`, and `FINAL_SCIENTIFIC_CONSISTENCY_AUDIT.md`.
-- Created `manuscript/revisions/REVISION_PLAN.md`, `docs/RESEARCH_WORKFLOW.md`, `docs/DECISION_LOG.md`, `docs/CHANGELOG.md`, and `README.md`.
+### Added
+- Final comprehensive revised manuscript draft (`manuscript/revisions/MANUSCRIPT_FINAL_RESEARCH_DRAFT.md`, 488 lines).
+- Final verified chemical reaction database (`research/chemistry/REACTION_DATABASE_FINAL.csv`, 28 balanced reactions).
+- Final cross-pathway comparison matrix (`research/tables/FINAL_CROSS_PATHWAY_COMPARISON.csv`, 13 pathways).
+- Final research gap closure report (`research/audit/FINAL_RESEARCH_GAP_CLOSURE_REPORT.md`).
+- Final LCA/TEA assumptions and limitations dossier (`research/lca_tea/FINAL_LCA_TEA_ASSUMPTIONS_AND_LIMITATIONS.md`).
+- Final literature coverage report (`research/literature/FINAL_LITERATURE_COVERAGE_REPORT.md`).
+- Final manuscript quality control report (`research/audit/FINAL_MANUSCRIPT_QC_REPORT.md`).
+- Script `scripts/build_final_manuscript.py` to deterministically compile the revised manuscript.
+
+---
+
+## [1.1.0] - 2026-10-14
+
+### Added
+- Enterprise documentation suite: `ARCHITECTURE.md`, `API.md`, `PROJECT_STRUCTURE.md`, `DEVELOPMENT.md`, `DEPLOYMENT.md`, `SECURITY.md`, `SUPPORT.md`, `RELEASE.md`, `ROADMAP.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`.
+- Expanded production `README.md` to 646 lines with detailed technical sections.
+- Repository engineering audit (`research/audit/REPOSITORY_ENGINEERING_AUDIT.md`) scoring 96/100.
+- Repository modernization report (`research/audit/REPOSITORY_MODERNIZATION_REPORT.md`).
+
+---
+
+## [1.0.0] - 2026-10-14
+
+### Added
+- Initial evidence-based scientific audit of baseline draft (`CO2_UTILIZATION_ResearchPaper_2026 (1).pdf`).
+- Master Literature Matrix (`research/literature/MASTER_LITERATURE_MATRIX.csv`, 22 benchmark papers, 32 columns).
+- Thermodynamically balanced reaction database (`research/chemistry/REACTION_DATABASE.csv`, 22 reactions, 25 columns).
+- 13 technological pathway research dossiers in `research/pathways/`.
+- Life-cycle assessment and techno-economic models in `research/lca_tea/`.
+- Scientific claim audit register (`research/evidence/CLAIM_REGISTER.csv`, 16 claims).
+- Section-by-section audit register (`research/audit/SECTION_BY_SECTION_AUDIT.csv`, 21 sections).
+- Baseline manuscript text extraction (`original_manuscript_text.txt`).
+- Decision log (`docs/DECISION_LOG.md`) documenting decisions D-01 through D-08.
+- Systematic research workflow protocol (`docs/RESEARCH_WORKFLOW.md`).
