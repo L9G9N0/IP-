@@ -37,6 +37,7 @@ An automated, evidence-based scientific audit engine, balanced chemical reaction
 - [API Reference](#api-reference)
 - [Configuration Guide](#configuration-guide)
 - [Project Structure Explanation](#project-structure-explanation)
+- [Master Documentation Index](#master-documentation-index)
 - [Security Model](#security-model)
 - [Performance Optimizations](#performance-optimizations)
 - [Error Handling](#error-handling)
@@ -360,7 +361,7 @@ The platform does not require any mandatory environment variables to build data 
 
 ## Configuration
 
-Static tool configurations are defined in [`pyproject.toml`](file:///Users/legend27648/Documents/SEM_5/IP/ASSIGN/Research_2/pyproject.toml):
+Static tool configurations are defined in [`pyproject.toml`](pyproject.toml):
 - **Ruff:** Target version `py311`, line length `100`, configured for Google docstrings and standard PEP 8 conventions.
 - **Mypy:** Strict type checking with `disallow_untyped_defs = true` and `warn_unused_ignores = true`.
 - **Pytest:** Test discovery configured in `tests/`, reporting test duration and strict marker enforcement.
@@ -467,7 +468,7 @@ with open("research/chemistry/REACTION_DATABASE_FINAL.csv", mode="r", encoding="
 
 ## API Reference
 
-The platform's API consists of deterministic CLI modules and structured CSV schemas. Full specifications are documented in [`API.md`](file:///Users/legend27648/Documents/SEM_5/IP/ASSIGN/Research_2/API.md).
+The platform's API consists of deterministic CLI modules and structured CSV schemas. Full specifications are documented in [`API.md`](API.md).
 
 ### Core Script CLI Interface
 
@@ -485,7 +486,7 @@ The platform's API consists of deterministic CLI modules and structured CSV sche
 
 ## Configuration Guide
 
-The platform can be configured via [`pyproject.toml`](file:///Users/legend27648/Documents/SEM_5/IP/ASSIGN/Research_2/pyproject.toml) and command-line flags.
+The platform can be configured via [`pyproject.toml`](pyproject.toml) and command-line flags.
 
 ### Modifying Schema Validations
 Schema definitions are enforced in `tests/test_csv_integrity.py`. To extend columns or add required headers to benchmark tables:
@@ -497,7 +498,7 @@ Schema definitions are enforced in `tests/test_csv_integrity.py`. To extend colu
 
 ## Project Structure Explanation
 
-For detailed breakdowns of each file, directory purpose, and data dictionary, refer to [`PROJECT_STRUCTURE.md`](file:///Users/legend27648/Documents/SEM_5/IP/ASSIGN/Research_2/PROJECT_STRUCTURE.md).
+For detailed breakdowns of each file, directory purpose, and data dictionary, refer to [`PROJECT_STRUCTURE.md`](PROJECT_STRUCTURE.md).
 
 - **`manuscript/`**: Houses the unverified 26-page baseline draft, original figures, revision plans, and synthesized peer-review manuscripts.
 - **`research/`**: The authoritative data layer. Contains structured CSV datasets, PRISMA review methodology protocols, and forensic audit registers.
@@ -506,9 +507,99 @@ For detailed breakdowns of each file, directory purpose, and data dictionary, re
 
 ---
 
+## Master Documentation Index
+
+The repository maintains 54 specialized technical specifications, forensic audit registers, technological pathway dossiers, and scientific manuscripts. All documents are written in GitHub Flavored Markdown (GFM) and kept synchronized with the underlying datasets:
+
+### 1. Enterprise Governance & Technical Standards (Root)
+
+| Specification | Primary Scope & Contents |
+|:---|:---|
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | 5-Layer System Architecture, Pipeline Data Contracts, and Constraints. |
+| [`API.md`](API.md) | Programmatic Python/R APIs, CLI parameter contracts, and POSIX exit codes. |
+| [`PROJECT_STRUCTURE.md`](PROJECT_STRUCTURE.md) | Complete directory taxonomy, file-by-file manifest, and architectural rationale. |
+| [`DEVELOPMENT.md`](DEVELOPMENT.md) | Local developer workflow, virtual environments, pre-commit, and Python 3.14 guidelines. |
+| [`DEPLOYMENT.md`](DEPLOYMENT.md) | Academic release pipeline, Zenodo DOI minting, Overleaf sync, and ChemRxiv deposition. |
+| [`RELEASE.md`](RELEASE.md) | Semantic versioning policy, release checklist, and v1.0.0-audit release notes. |
+| [`ROADMAP.md`](ROADMAP.md) | Phase 0–12 milestone tracker across engineering and research sprints (2026–2027). |
+| [`SECURITY.md`](SECURITY.md) | Threat modeling, scientific data integrity protocol, and vulnerability disclosure SLAs. |
+| [`SUPPORT.md`](SUPPORT.md) | Institutional support tiers, scientific dispute triage, and contact channels. |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contribution protocols, Conventional Commits specification, and PR review checklist. |
+| [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Scientific integrity code adapted from Contributor Covenant v2.1. |
+| [`CHANGELOG.md`](CHANGELOG.md) | Project release history adhering to Keep a Changelog v1.1.0 specifications. |
+
+### 2. Forensic Scientific Audits & Risk Registers (`research/audit/`)
+
+| Audit Report | Scope & Key Findings |
+|:---|:---|
+| [`REPOSITORY_MODERNIZATION_REPORT.md`](research/audit/REPOSITORY_MODERNIZATION_REPORT.md) | Comprehensive Phases 1–7 transformation report, file manifests, and quality sign-off. |
+| [`FINAL_SCIENTIFIC_CONSISTENCY_AUDIT.md`](research/audit/FINAL_SCIENTIFIC_CONSISTENCY_AUDIT.md) | 15-point empirical and thermodynamic consistency audit across all datasets. |
+| [`PUBLICATION_RISK_REGISTER.md`](research/audit/PUBLICATION_RISK_REGISTER.md) | Forensic peer-review risk matrix against desk-rejection criteria for high-impact journals. |
+| [`FINAL_RESEARCH_GAP_CLOSURE_REPORT.md`](research/audit/FINAL_RESEARCH_GAP_CLOSURE_REPORT.md) | Verification and closure evidence for all 10 baseline research gaps. |
+| [`FINAL_MANUSCRIPT_QC_REPORT.md`](research/audit/FINAL_MANUSCRIPT_QC_REPORT.md) | 4-tier manuscript quality assurance and error-proofing report. |
+| [`REPOSITORY_ENGINEERING_AUDIT.md`](research/audit/REPOSITORY_ENGINEERING_AUDIT.md) | Initial baseline architecture audit and code-level vulnerability analysis. |
+| [`ORIGINAL_MANUSCRIPT_ANALYSIS.md`](research/audit/ORIGINAL_MANUSCRIPT_ANALYSIS.md) | Forensic analysis of the original 26-page unverified manuscript. |
+| [`INITIAL_RESEARCH_PROBLEMS.md`](research/audit/INITIAL_RESEARCH_PROBLEMS.md) | Inventory of 10 fatal scientific problems identified in baseline draft. |
+
+### 3. Technological Pathway Research Dossiers (`research/pathways/`)
+
+| Pathway Report | Scope, Catalytic Systems & Key Findings |
+|:---|:---|
+| [`Electrochemical_Reduction.md`](research/pathways/Electrochemical_Reduction.md) | CO2RR to C1–C3 products; GDE flow-cell architectures, Faradaic efficiencies, and carbonate crossover. |
+| [`Methanol.md`](research/pathways/Methanol.md) | Thermocatalytic CO2 hydrogenation to methanol; Cu/ZnO/Al2O3 vs In2O3/ZrO2, kinetics, and water deactivation. |
+| [`Dry_and_Bi_Reforming.md`](research/pathways/Dry_and_Bi_Reforming.md) | Dry reforming (DRM) & bi-reforming (BRM); coking resistance, Ni-based alloys, and syngas ratio tuning. |
+| [`Urea_and_CN_Coupling.md`](research/pathways/Urea_and_CN_Coupling.md) | Direct CO2 + 2NH3 -> Urea; ammonium carbamate equilibrium, energy efficiency, and electro-coupling. |
+| [`Polycarbonates_and_DMC.md`](research/pathways/Polycarbonates_and_DMC.md) | Non-phosgene organic carbonates & aliphatic polycarbonates; epoxide coupling, catalysts, and atom economy. |
+| [`Carbon_Nanomaterials.md`](research/pathways/Carbon_Nanomaterials.md) | Molten carbonate electrosynthesis (C2CNT) vs magnesiothermic reduction; carbon nanotubes and nanofibers. |
+| [`Pharmaceutical_Applications.md`](research/pathways/Pharmaceutical_Applications.md) | Photoredox carboxylation and late-stage C(sp3)-H activation; API synthesis and green chemistry metrics. |
+| [`Biotechnology_and_MES.md`](research/pathways/Biotechnology_and_MES.md) | Microbial electrosynthesis (MES) and acetogenic fermentation; gas-fermentation kinetics and metabolic yields. |
+| [`Mineralisation_and_Construction.md`](research/pathways/Mineralisation_and_Construction.md) | Ex-situ mineral carbonation & concrete curing; slag/fly-ash carbonation, permanence, and avoided clinker emissions. |
+| [`Photocatalytic_Conversion.md`](research/pathways/Photocatalytic_Conversion.md) | Direct solar CO2 reduction; semiconductor heterojunctions, apparent quantum efficiency, and mass transport limits. |
+| [`Integrated_Capture_Conversion.md`](research/pathways/Integrated_Capture_Conversion.md) | Dual-function materials (DFMs); integrated carbon capture and conversion, temperature swing limits, and reactive regeneration. |
+| [`Sustainability_LCA_TEA.md`](research/pathways/Sustainability_LCA_TEA.md) | Cradle-to-grave LCA boundaries (ISO 14040/14044), grid carbon intensity break-evens, and levelized costs (LCOP). |
+| [`Policy_and_Market_Analysis.md`](research/pathways/Policy_and_Market_Analysis.md) | US 45Q tax credit, EU CBAM, India CCTS & National Green Hydrogen Mission policy evaluation. |
+
+### 4. Chemistry Mechanisms & Empirical Evidence (`research/chemistry/` & `research/evidence/`)
+
+| Document | Scope & Technical Contributions |
+|:---|:---|
+| [`REACTION_MECHANISM_ANALYSIS.md`](research/chemistry/REACTION_MECHANISM_ANALYSIS.md) | Elementary reaction kinetics, DFT-validated pathways, and active-site intermediate dynamics. |
+| [`NEW_REACTIONS_VERIFIED.md`](research/chemistry/NEW_REACTIONS_VERIFIED.md) | 13 newly verified chemical reactions with balanced stoichiometry and thermodynamic functions. |
+| [`NEW_REACTION_CANDIDATES.md`](research/chemistry/NEW_REACTION_CANDIDATES.md) | Candidate reaction screening and thermodynamic viability criteria. |
+| [`METRIC_NORMALIZATION.md`](research/evidence/METRIC_NORMALIZATION.md) | Unified mathematical framework decoupling Faradaic efficiency, single-pass conversion, and energy efficiency. |
+| [`EVIDENCE_COVERAGE_REPORT.md`](research/evidence/EVIDENCE_COVERAGE_REPORT.md) | Completeness register mapping claims to primary DOI-verified benchmarks. |
+
+### 5. Literature Synthesis, Gaps & Life-Cycle Modeling (`research/`)
+
+| Document | Scope & Methodological Rigor |
+|:---|:---|
+| [`LITERATURE_REVIEW_PROTOCOL.md`](research/methodology/LITERATURE_REVIEW_PROTOCOL.md) | Formal PRISMA 2020 systematic literature screening protocol across OpenAlex, Crossref, and PubMed. |
+| [`BENCHMARK_PAPER_ANALYSIS.md`](research/literature/BENCHMARK_PAPER_ANALYSIS.md) | Forensic breakdown of 22 landmark empirical papers from 2020–2026. |
+| [`FINAL_LITERATURE_COVERAGE_REPORT.md`](research/literature/FINAL_LITERATURE_COVERAGE_REPORT.md) | Bibliometric screening summary and inclusion/exclusion matrix. |
+| [`RESEARCH_GAPS.md`](research/gaps/RESEARCH_GAPS.md) | Catalog of 10 persistent technological bottlenecks in CCU commercialization. |
+| [`REVIEW_LANDSCAPE_2020_2025.md`](research/gaps/REVIEW_LANDSCAPE_2020_2025.md) | Comparative analysis of competing literature reviews published in top-tier journals. |
+| [`REVIEW_NOVELTY_ANALYSIS.md`](research/gaps/REVIEW_NOVELTY_ANALYSIS.md) | Novelty differentiation matrix of this platform's review against existing literature. |
+| [`LCA_REVIEW.md`](research/lca_tea/LCA_REVIEW.md) | Systematic review of CCU life-cycle assessment methodologies and boundary conditions. |
+| [`TEA_REVIEW.md`](research/lca_tea/TEA_REVIEW.md) | Techno-economic benchmark review across capital expenditures, operating costs, and fossil parities. |
+| [`FINAL_LCA_TEA_ASSUMPTIONS_AND_LIMITATIONS.md`](research/lca_tea/FINAL_LCA_TEA_ASSUMPTIONS_AND_LIMITATIONS.md) | Standardized parameter assumptions and sensitivity bounds. |
+
+### 6. Manuscripts, Figures & Decision Records (`manuscript/`, `research/figures/`, `docs/`)
+
+| Document | Description & Target Output |
+|:---|:---|
+| [`MANUSCRIPT_FINAL_RESEARCH_DRAFT.md`](manuscript/revisions/MANUSCRIPT_FINAL_RESEARCH_DRAFT.md) | Complete, fully audited, publication-ready review manuscript draft. |
+| [`REVISION_PLAN.md`](manuscript/revisions/REVISION_PLAN.md) | Section-by-section overhaul blueprint for camera-ready submission. |
+| [`FIGURE_PLANS.md`](research/figures/FIGURE_PLANS.md) | Publication-grade figure blueprints and visualization plans. |
+| [`FIGURE_AUDIT.md`](research/figures/FIGURE_AUDIT.md) | Forensic audit of baseline bitmap figures and planned vector replacements. |
+| [`TABLE_AUDIT.md`](research/tables/TABLE_AUDIT.md) | Schema audit of all cross-pathway summary tables. |
+| [`DECISION_LOG.md`](docs/DECISION_LOG.md) | Architectural and scientific decision records (D-01 to D-08). |
+| [`RESEARCH_WORKFLOW.md`](docs/RESEARCH_WORKFLOW.md) | End-to-end evidence compilation and manuscript generation workflow. |
+
+---
+
 ## Security Model
 
-The security model is defined in [`SECURITY.md`](file:///Users/legend27648/Documents/SEM_5/IP/ASSIGN/Research_2/SECURITY.md).
+The security model is defined in [`SECURITY.md`](SECURITY.md).
 
 - **Scientific Data Integrity:** Every quantitative datapoint is linked to a permanent DOI. Direct citations must originate from peer-reviewed literature or official government gazettes.
 - **Zero Supply-Chain Attack Surface:** The engine relies exclusively on Python standard library modules for core operations, eliminating npm/pip package injection risks.
@@ -561,7 +652,7 @@ pytest tests/test_scripts.py
 
 ## Deployment
 
-Deployment procedures are documented in [`DEPLOYMENT.md`](file:///Users/legend27648/Documents/SEM_5/IP/ASSIGN/Research_2/DEPLOYMENT.md).
+Deployment procedures are documented in [`DEPLOYMENT.md`](DEPLOYMENT.md).
 
 - **Academic Archiving:** On tagged releases (e.g., `v1.0.0`), datasets are archived to **Zenodo** to generate persistent, citable Digital Object Identifiers (DOIs).
 - **Preprint Deposition:** Synthesized manuscript drafts are formatted for automatic compilation and deposition to **ChemRxiv** or **arXiv**.
@@ -571,7 +662,7 @@ Deployment procedures are documented in [`DEPLOYMENT.md`](file:///Users/legend27
 
 ## Roadmap
 
-The active engineering and research roadmap is tracked in [`ROADMAP.md`](file:///Users/legend27648/Documents/SEM_5/IP/ASSIGN/Research_2/ROADMAP.md).
+The active engineering and research roadmap is tracked in [`ROADMAP.md`](ROADMAP.md).
 
 ```text
 Phase 1: Baseline Audit (Done) 
@@ -589,7 +680,7 @@ Phase 1: Baseline Audit (Done)
 
 ## Contributing
 
-Contributions are welcome from chemical engineers, software developers, and climate data scientists. Please review [`CONTRIBUTING.md`](file:///Users/legend27648/Documents/SEM_5/IP/ASSIGN/Research_2/CONTRIBUTING.md) and [`CODE_OF_CONDUCT.md`](file:///Users/legend27648/Documents/SEM_5/IP/ASSIGN/Research_2/CODE_OF_CONDUCT.md) before submitting pull requests.
+Contributions are welcome from chemical engineers, software developers, and climate data scientists. Please review [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) before submitting pull requests.
 
 ### Development Workflow
 1. Fork the repository.
@@ -611,7 +702,7 @@ Contributions are welcome from chemical engineers, software developers, and clim
 
 ## License
 
-This project is licensed under the **MIT License**. See the [`LICENSE`](file:///Users/legend27648/Documents/SEM_5/IP/ASSIGN/Research_2/LICENSE) file for details.  
+This project is licensed under the **MIT License**. See the [`LICENSE`](LICENSE) file for details.  
 Scientific data, matrices, and manuscript texts are additionally licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license.
 
 ---
@@ -639,7 +730,7 @@ Scientific data, matrices, and manuscript texts are additionally licensed under 
 
 For technical support, reporting data inaccuracies, or academic collaboration inquiries:
 - **Technical Inquiries & Bug Reports:** Open an issue via the [GitHub Issue Tracker](https://github.com/L9G9N0/IP-/issues).
-- **Academic Queries:** Refer to [`SUPPORT.md`](file:///Users/legend27648/Documents/SEM_5/IP/ASSIGN/Research_2/SUPPORT.md) or email the research team.
+- **Academic Queries:** Refer to [`SUPPORT.md`](SUPPORT.md) or email the research team.
 
 ---
 
