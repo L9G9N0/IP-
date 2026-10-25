@@ -44,6 +44,11 @@ Repository = "https://github.com/L9G9N0/IP-.git"
 Issues = "https://github.com/L9G9N0/IP-/issues"
 Changelog = "https://github.com/L9G9N0/IP-/blob/main/CHANGELOG.md"
 
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["scripts*", "tests*"]
+exclude = ["research*", "manuscript*", "docs*"]
+
 [tool.ruff]
 target-version = "py311"
 line-length = 100
@@ -56,8 +61,12 @@ exclude = [
 ]
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I", "N", "UP", "B", "C4"]
-ignore = ["E501"] # line length handled by formatter
+select = ["E", "F", "W"]
+ignore = [
+    "E501",  # line length handled by black/formatter
+    "W291",  # trailing whitespace used in multiline markdown strings for hard line breaks
+    "W293",  # blank line contains whitespace
+]
 
 [tool.pytest.ini_options]
 minversion = "8.0"

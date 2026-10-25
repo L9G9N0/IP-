@@ -70,7 +70,7 @@ class TestDocs(unittest.TestCase):
                 content = f.read()
                 self.assertTrue(content.strip(), f"Markdown file {path.name} is empty")
                 lines = content.splitlines()
-                top_headers = [l for l in lines if l.startswith("# ")]
+                top_headers = [line for line in lines if line.startswith("# ")]
                 self.assertGreaterEqual(len(top_headers), 1, f"Markdown file {path.name} missing top-level '# ' heading")
 
 
